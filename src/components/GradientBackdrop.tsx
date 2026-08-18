@@ -42,8 +42,6 @@ export interface GradientBackdropProps {
   fade?: boolean;
   /** Full-bleed decorative texture layered over the gradient — give the root a defined height via `className` for it to fill. */
   backgroundImage?: StaticImageData | string;
-  /** Thin brand-glow accent line across the very top edge — recurs (as a blue-glow "Union" shape) across every sampled Figma frame. */
-  topGlow?: boolean;
   className?: string;
   children?: ReactNode;
 }
@@ -51,15 +49,13 @@ export interface GradientBackdropProps {
 /**
  * Full-bleed background treatment shared by every page mockup: the hero
  * gradient, an optional bottom fade, an optional decorative texture image,
- * an optional top glow line, and a slot for `DecorativeBlob`s, with
- * content stacked on top. This is chrome/texture only — it does not lay
- * out page content.
+ * and a slot for `DecorativeBlob`s, with content stacked on top. This is
+ * chrome/texture only — it does not lay out page content.
  */
 export function GradientBackdrop({
   gradient = true,
   fade = false,
   backgroundImage,
-  topGlow = false,
   className,
   children,
 }: GradientBackdropProps) {
@@ -71,18 +67,13 @@ export function GradientBackdrop({
           className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-hero)]"
         />
       )}
-      {topGlow && (
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent shadow-glow-brand"
-        />
-      )}
       {backgroundImage && (
         <Image
           src={backgroundImage}
           alt=""
           fill
           priority
+          sizes="100vw"
           className="pointer-events-none object-cover"
         />
       )}

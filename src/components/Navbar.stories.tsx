@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
+import { Container } from "./Container";
 import { GradientBackdrop } from "./GradientBackdrop";
 import { NavDropdown, Navbar } from "./Navbar";
 import { NavLink } from "./NavLink";
@@ -42,6 +43,34 @@ export const Default: Story = {
           </>
         }
       />
+    </GradientBackdrop>
+  ),
+};
+
+export const HomeActive: Story = {
+  render: () => (
+    <GradientBackdrop className="min-h-70">
+      <Container>
+        <Navbar
+          homeActive
+          start={<NavLink href="#">GAMES</NavLink>}
+          end={
+            <>
+              <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+              <NavLink href="#">CONTACT US</NavLink>
+            </>
+          }
+          social={
+            <>
+              <SocialIcon platform="x" href="#" />
+              <SocialIcon platform="tiktok" href="#" />
+              <SocialIcon platform="instagram" href="#" />
+              <SocialIcon platform="youtube" href="#" />
+              <SocialIcon platform="linkedin" href="#" />
+            </>
+          }
+        />
+      </Container>
     </GradientBackdrop>
   ),
 };

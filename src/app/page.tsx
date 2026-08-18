@@ -51,33 +51,32 @@ const FOOTER_LINKS = [
 export default function Home() {
   return (
     <>
-      <GradientBackdrop
-        backgroundImage={heroBackground}
-        topGlow
-        className="min-h-160 md:min-h-190 lg:min-h-220"
-      >
-        <Container>
-          <Navbar
-            start={<NavLink href="/games">GAMES</NavLink>}
-            end={
-              <>
-                <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
-                <NavLink href="/contact">CONTACT US</NavLink>
-              </>
-            }
-            social={NAV_SOCIAL_LINKS.map((social) => (
-              <SocialIcon key={social.platform} platform={social.platform} href={social.href} />
-            ))}
-          />
-        </Container>
+      <GradientBackdrop backgroundImage={heroBackground} className="min-h-screen">
+        <div className="flex min-h-screen flex-col">
+          <Container>
+            <Navbar
+              homeActive
+              start={<NavLink href="/games">GAMES</NavLink>}
+              end={
+                <>
+                  <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+                  <NavLink href="/contact">CONTACT US</NavLink>
+                </>
+              }
+              social={NAV_SOCIAL_LINKS.map((social) => (
+                <SocialIcon key={social.platform} platform={social.platform} href={social.href} />
+              ))}
+            />
+          </Container>
 
-        <div className="flex justify-center px-6 pt-16 sm:pt-24 lg:pt-28">
-          <Image
-            src={heroWordmark}
-            alt="Vibrainiac Games"
-            priority
-            className="h-auto w-full max-w-sm sm:max-w-xl"
-          />
+          <div className="flex flex-1 items-center justify-center px-6 py-12">
+            <Image
+              src={heroWordmark}
+              alt="Vibrainiac Games"
+              priority
+              className="h-auto w-full max-w-sm sm:max-w-xl"
+            />
+          </div>
         </div>
       </GradientBackdrop>
 
