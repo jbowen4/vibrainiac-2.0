@@ -1,0 +1,192 @@
+/**
+ * Vibrainiac Games — Design Tokens
+ *
+ * Extracted from the Figma source-of-truth mockups (file "Company Visuals"):
+ * Fonts/Footer/Navbar/Backgrounds reference frames + Home, About–Team,
+ * About–Values, About–Careers, About–News page mockups.
+ *
+ * These are plain CSS custom properties, consumed by Tailwind via
+ * `@theme inline` in src/app/globals.css. Values live here ONCE — Tailwind
+ * only references them with var(), it never restates them.
+ */
+
+:root {
+  /* ---------------------------------------------------------------------
+   * Color — Backgrounds
+   * The site uses a single dark theme throughout every mockup (no light
+   * mode was present in the Figma file).
+   * ------------------------------------------------------------------- */
+  --color-background-primary: #0b0b0b;      /* base page/canvas background */
+  --color-background-secondary: #0a0c11;    /* recurring dark section panel */
+  --color-background-elevated: #0f182f;     /* footer / elevated dark-navy surface */
+
+  /* Full-bleed hero backdrop gradient, repeats identically on every page mockup */
+  --gradient-hero: linear-gradient(180deg, #02030a 0%, #404c9f 51%, #02030a 100%);
+  /* Bottom fade / vignette overlay, also repeats on every page mockup */
+  --gradient-fade: linear-gradient(180deg, #03020d 0%, #000000 100%);
+  /* Placeholder fill used behind unloaded images (news thumbnails) */
+  --gradient-image-placeholder: linear-gradient(135deg, #d9d9d9 0%, #737373 100%);
+
+  /* Decorative accent "blobs" — same 3 radial gradients recur on every
+   * page mockup, used behind cards/art for visual texture. */
+  --gradient-blob-magenta: radial-gradient(circle, #b13589 0%, #c62f94 79%, #8a3ac8 100%);
+  --gradient-blob-sunset: radial-gradient(circle, #e0e8b7 0%, #fb8a2e 44%, #e2425c 71%, #e2425c 100%);
+  --gradient-blob-violet: radial-gradient(circle, #406adc 16%, #6a45be 47%, #6a45be 100%);
+
+  /* ---------------------------------------------------------------------
+   * Color — Text
+   * ------------------------------------------------------------------- */
+  --color-text-primary: #ffffff;    /* default text on dark surfaces */
+  --color-text-secondary: #b4b4b4;  /* muted copy, e.g. address/meta text */
+  --color-text-muted: #777777;      /* low-emphasis / placeholder text */
+  --color-text-inverse: #1a1a1a;    /* text placed on light surfaces (dropdown panel, badges) */
+
+  /* ---------------------------------------------------------------------
+   * Color — Brand & Accent
+   * ------------------------------------------------------------------- */
+  --color-accent-primary: #0090ff;   /* brand blue — logo, links, active states, glows */
+  --color-accent-secondary: #ffb854; /* warm highlight — callouts, headline emphasis */
+  --color-status-live: #62ff54;      /* "new/live" indicator dot & badges */
+
+  /* ---------------------------------------------------------------------
+   * Color — Borders & Surfaces
+   * ------------------------------------------------------------------- */
+  --color-border-subtle: #949494;          /* hairline dividers (footer, section rules) */
+  --color-border-hairline: #d9d9d9;        /* light hairline border on dark cards */
+  --color-surface-glass: rgb(217 217 217 / 25%); /* translucent glass panel fill (nav dropdown) */
+  --color-overlay-scrim: rgb(0 0 0 / 60%);       /* dark scrim over imagery */
+
+  /* Third-party social brand marks (kept separate from the core palette —
+   * these are fixed platform colors, not design-system choices) */
+  --color-social-youtube: #ff0302;
+  --color-social-tiktok-accent: #ff004f;
+  --color-social-tiktok-accent-2: #00f2ea;
+  --color-social-linkedin: #0a66c2;
+
+  /* ---------------------------------------------------------------------
+   * Typography — Families
+   * "Afacad Flux" is presented in the Figma "Fonts" reference frame with
+   * its full 100–900 weight ramp and used consistently for real UI copy
+   * across every page mockup — the committed primary typeface.
+   * ------------------------------------------------------------------- */
+  --font-family-primary: "Afacad Flux", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* ---------------------------------------------------------------------
+   * Typography — Weights (matches the Afacad Flux variable-font ramp)
+   * ------------------------------------------------------------------- */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* ---------------------------------------------------------------------
+   * Typography — Size scale (consolidated from recurring sizes across
+   * hero, section, and body copy in the page mockups)
+   * ------------------------------------------------------------------- */
+  --font-size-display: 6rem;       /* 96px — hero headline ("help us build the next level") */
+  --font-size-heading-xl: 3rem;    /* 48px — page/section headline */
+  --font-size-heading-lg: 2.25rem; /* 36px — sub-section headline */
+  --font-size-heading-md: 1.75rem; /* 28px — card/lead headline */
+  --font-size-heading-sm: 1.5rem;  /* 24px — small section label */
+  --font-size-body-lg: 1.25rem;    /* 20px — intro/lede copy */
+  --font-size-body: 1.125rem;      /* 18px — paragraph copy */
+  --font-size-body-sm: 1rem;       /* 16px — nav links, UI labels */
+  --font-size-caption: 0.875rem;   /* 14px — small labels, pagination */
+
+  /* ---------------------------------------------------------------------
+   * Typography — Line height & letter spacing
+   * Display/heading text is set tight; body copy uses normal-to-relaxed
+   * leading. No tracking (letter-spacing) was used anywhere in the file.
+   * ------------------------------------------------------------------- */
+  --line-height-tight: 0.9;
+  --line-height-normal: 1.2;
+  --line-height-relaxed: 1.5;
+  --letter-spacing-normal: 0;
+
+  /* ---------------------------------------------------------------------
+   * Spacing scale
+   * ------------------------------------------------------------------- */
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-5: 1.5rem;   /* 24px */
+  --spacing-6: 2rem;     /* 32px */
+  --spacing-7: 2.5rem;   /* 40px — matches nav pill horizontal padding */
+  --spacing-8: 4rem;     /* 64px */
+  --spacing-9: 6rem;     /* 96px */
+  --spacing-10: 8rem;    /* 128px */
+
+  /* Semantic aliases used for page rhythm */
+  --spacing-section-sm: var(--spacing-8);
+  --spacing-section-md: var(--spacing-9);
+  --spacing-section-lg: var(--spacing-10);
+
+  /* ---------------------------------------------------------------------
+   * Sizing / layout
+   * ------------------------------------------------------------------- */
+  --container-max-width: 1280px;
+  --container-padding-inline: var(--spacing-7);
+
+  /* ---------------------------------------------------------------------
+   * Border radius
+   * ------------------------------------------------------------------- */
+  --radius-sm: 0.375rem;  /* 6px — chips, small buttons, glass panels */
+  --radius-md: 1rem;      /* 16px — image/card thumbnails */
+  --radius-lg: 2.125rem;  /* 34px — pill-shaped nav/logo capsule */
+  --radius-full: 9999px;  /* circular avatars */
+
+  /* ---------------------------------------------------------------------
+   * Borders
+   * ------------------------------------------------------------------- */
+  --border-width-hairline: 0.5px;
+  --border-width-default: 1px;
+
+  /* ---------------------------------------------------------------------
+   * Shadows & glows
+   * ------------------------------------------------------------------- */
+  --shadow-card: 0 4px 17px 0 rgb(0 0 0 / 100%);
+  --shadow-elevated: 0 0 15px 0 rgb(0 0 0 / 50%);
+  --shadow-glow-brand: 0 4px 4px 0 rgb(0 144 255 / 100%);
+  --shadow-glow-accent: 0 0 9px 0 rgb(0 145 255 / 100%);
+
+  /* ---------------------------------------------------------------------
+   * Blur (glassmorphism panels)
+   * ------------------------------------------------------------------- */
+  --blur-glass-sm: 4px;
+  --blur-glass-md: 10px;
+
+  /* ---------------------------------------------------------------------
+   * Opacity
+   * ------------------------------------------------------------------- */
+  --opacity-image-dim: 0.15;  /* dimmed hero/background imagery under gradients */
+  --opacity-decorative: 0.3;  /* soft decorative glow rings */
+
+  /* ---------------------------------------------------------------------
+   * Motion
+   * No prototype/animation data was present on the static mockups; these
+   * are conventional interactive-state timings (dropdown, hover, focus)
+   * sized to match the glass/glow aesthetic rather than measured values.
+   * ------------------------------------------------------------------- */
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 400ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---------------------------------------------------------------------
+   * Breakpoints (as CSS reference values — no responsive frames were
+   * present in the sampled Figma mockups; these follow conventional
+   * desktop-first breakpoints as a placeholder until responsive designs
+   * are provided)
+   * ------------------------------------------------------------------- */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}

@@ -1,26 +1,136 @@
 @import "tailwindcss";
+@import "../../styles/tokens.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+ * Maps the semantic tokens from styles/tokens.css into Tailwind's theme
+ * namespace so utilities (bg-background-primary, text-heading-xl, etc.)
+ * are generated from them. Values are never restated here — every line
+ * points back at the custom property defined in tokens.css.
+ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Colors */
+  --color-background-primary: var(--color-background-primary);
+  --color-background-secondary: var(--color-background-secondary);
+  --color-background-elevated: var(--color-background-elevated);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-inverse: var(--color-text-inverse);
+
+  --color-accent-primary: var(--color-accent-primary);
+  --color-accent-secondary: var(--color-accent-secondary);
+  --color-status-live: var(--color-status-live);
+
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-hairline: var(--color-border-hairline);
+  --color-surface-glass: var(--color-surface-glass);
+  --color-overlay-scrim: var(--color-overlay-scrim);
+
+  --color-social-youtube: var(--color-social-youtube);
+  --color-social-tiktok-accent: var(--color-social-tiktok-accent);
+  --color-social-tiktok-accent-2: var(--color-social-tiktok-accent-2);
+  --color-social-linkedin: var(--color-social-linkedin);
+
+  /* Gradients (exposed as background-image utilities via bg-[image:...] is
+     verbose, so these are also available as plain vars for arbitrary use) */
+  --gradient-hero: var(--gradient-hero);
+  --gradient-fade: var(--gradient-fade);
+  --gradient-image-placeholder: var(--gradient-image-placeholder);
+  --gradient-blob-magenta: var(--gradient-blob-magenta);
+  --gradient-blob-sunset: var(--gradient-blob-sunset);
+  --gradient-blob-violet: var(--gradient-blob-violet);
+
+  /* Typography */
+  --font-sans: var(--font-afacad-flux), var(--font-family-primary);
+
+  --font-weight-thin: var(--font-weight-thin);
+  --font-weight-extralight: var(--font-weight-extralight);
+  --font-weight-light: var(--font-weight-light);
+  --font-weight-regular: var(--font-weight-regular);
+  --font-weight-medium: var(--font-weight-medium);
+  --font-weight-semibold: var(--font-weight-semibold);
+  --font-weight-bold: var(--font-weight-bold);
+  --font-weight-extrabold: var(--font-weight-extrabold);
+  --font-weight-black: var(--font-weight-black);
+
+  --font-size-display: var(--font-size-display);
+  --font-size-heading-xl: var(--font-size-heading-xl);
+  --font-size-heading-lg: var(--font-size-heading-lg);
+  --font-size-heading-md: var(--font-size-heading-md);
+  --font-size-heading-sm: var(--font-size-heading-sm);
+  --font-size-body-lg: var(--font-size-body-lg);
+  --font-size-body: var(--font-size-body);
+  --font-size-body-sm: var(--font-size-body-sm);
+  --font-size-caption: var(--font-size-caption);
+
+  --leading-tight: var(--line-height-tight);
+  --leading-normal: var(--line-height-normal);
+  --leading-relaxed: var(--line-height-relaxed);
+  --tracking-normal: var(--letter-spacing-normal);
+
+  /* Spacing */
+  --spacing-1: var(--spacing-1);
+  --spacing-2: var(--spacing-2);
+  --spacing-3: var(--spacing-3);
+  --spacing-4: var(--spacing-4);
+  --spacing-5: var(--spacing-5);
+  --spacing-6: var(--spacing-6);
+  --spacing-7: var(--spacing-7);
+  --spacing-8: var(--spacing-8);
+  --spacing-9: var(--spacing-9);
+  --spacing-10: var(--spacing-10);
+  --spacing-section-sm: var(--spacing-section-sm);
+  --spacing-section-md: var(--spacing-section-md);
+  --spacing-section-lg: var(--spacing-section-lg);
+
+  /* Sizing */
+  --container-max-width: var(--container-max-width);
+  --container-padding-inline: var(--container-padding-inline);
+
+  /* Radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
+
+  /* Borders */
+  --border-width-hairline: var(--border-width-hairline);
+  --border-width-default: var(--border-width-default);
+
+  /* Shadows */
+  --shadow-card: var(--shadow-card);
+  --shadow-elevated: var(--shadow-elevated);
+  --shadow-glow-brand: var(--shadow-glow-brand);
+  --shadow-glow-accent: var(--shadow-glow-accent);
+
+  /* Blur */
+  --blur-glass-sm: var(--blur-glass-sm);
+  --blur-glass-md: var(--blur-glass-md);
+
+  /* Opacity */
+  --opacity-image-dim: var(--opacity-image-dim);
+  --opacity-decorative: var(--opacity-decorative);
+
+  /* Motion */
+  --transition-fast: var(--transition-fast);
+  --transition-base: var(--transition-base);
+  --transition-slow: var(--transition-slow);
+  --ease-standard: var(--ease-standard);
+
+  /* Breakpoints — Tailwind emits these inside @media conditions, which
+     cannot reference CSS custom properties, so the literal values from
+     tokens.css are restated here once (that file remains their source
+     of truth for documentation/non-Tailwind consumers). */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
 }
