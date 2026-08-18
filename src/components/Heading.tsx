@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 import { cn } from "@/lib/cn";
 
@@ -20,7 +20,7 @@ const DEFAULT_TAG: Record<HeadingSize, ElementType> = {
 
 export type HeadingSize = keyof typeof SIZE_STYLES;
 
-export interface HeadingProps {
+export interface HeadingProps extends Omit<ComponentPropsWithoutRef<"h1">, "size" | "as"> {
   /** Visual size — independent from the semantic tag, pick the tag that fits the document outline. */
   size?: HeadingSize;
   /** Overrides the default element for this size (e.g. render an `xl` visually but as an `h2`). */
@@ -42,6 +42,7 @@ export function Heading({
   glow = false,
   className,
   children,
+  ...rest
 }: HeadingProps) {
   const Tag = as ?? DEFAULT_TAG[size];
 
@@ -53,6 +54,7 @@ export function Heading({
         glow && "drop-shadow-[var(--shadow-glow-accent)]",
         className
       )}
+      {...rest}
     >
       {children}
     </Tag>
