@@ -148,13 +148,26 @@ export function Navbar({
       <div className='flex flex-wrap items-center justify-center gap-x-3 gap-y-2 whitespace-nowrap md:flex-nowrap md:gap-16'>
         <div className='hidden md:contents'>{start}</div>
         <div className='relative flex items-center self-stretch'>
-          {homeActive && !mobileOpen && <NavActiveDrip />}
+          {homeActive && (
+            <span className='hidden md:contents'>
+              <NavActiveDrip />
+            </span>
+          )}
           <Link
             href='/'
             className={cn(
               'relative inline-flex shrink-0 items-center justify-center rounded-lg px-3 md:px-4',
             )}>
-            {logo ?? <Logo size={50} variant={homeActive ? 'dark' : 'light'} />}
+            {logo ?? (
+              <>
+                <span className='md:hidden'>
+                  <Logo size={50} variant='light' />
+                </span>
+                <span className='hidden md:block'>
+                  <Logo size={50} variant={homeActive ? 'dark' : 'light'} />
+                </span>
+              </>
+            )}
           </Link>
         </div>
         <div className='hidden md:contents'>{end}</div>
