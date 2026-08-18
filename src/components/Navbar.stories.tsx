@@ -10,7 +10,6 @@ const ABOUT_ITEMS = [
   { label: "The Team", href: "#team" },
   { label: "Our Values", href: "#values" },
   { label: "For Partners", href: "#partners" },
-  { label: "News", href: "#news" },
 ];
 
 const meta = {
@@ -26,7 +25,12 @@ export const Default: Story = {
   render: () => (
     <GradientBackdrop className="p-6">
       <Navbar
-        start={<NavLink href="#">GAMES</NavLink>}
+        start={
+          <>
+            <NavLink href="#">NEWS</NavLink>
+            <NavLink href="#">GAMES</NavLink>
+          </>
+        }
         end={
           <>
             <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
@@ -53,7 +57,12 @@ export const HomeActive: Story = {
       <Container>
         <Navbar
           homeActive
-          start={<NavLink href="#">GAMES</NavLink>}
+          start={
+            <>
+              <NavLink href="#">NEWS</NavLink>
+              <NavLink href="#">GAMES</NavLink>
+            </>
+          }
           end={
             <>
               <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
@@ -79,7 +88,12 @@ export const DropdownOpen: Story = {
   render: () => (
     <GradientBackdrop className="p-6 pb-64">
       <Navbar
-        start={<NavLink href="#">GAMES</NavLink>}
+        start={
+          <>
+            <NavLink href="#">NEWS</NavLink>
+            <NavLink href="#">GAMES</NavLink>
+          </>
+        }
         end={
           <>
             <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
@@ -104,4 +118,36 @@ export const DropdownOpen: Story = {
     );
     trigger?.click();
   },
+};
+
+export const NewsActive: Story = {
+  render: () => (
+    <GradientBackdrop className="p-6">
+      <Navbar
+        start={
+          <>
+            <NavLink href="#" active>
+              NEWS
+            </NavLink>
+            <NavLink href="#">GAMES</NavLink>
+          </>
+        }
+        end={
+          <>
+            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+            <NavLink href="#">CONTACT US</NavLink>
+          </>
+        }
+        social={
+          <>
+            <SocialIcon platform="x" href="#" />
+            <SocialIcon platform="tiktok" href="#" />
+            <SocialIcon platform="instagram" href="#" />
+            <SocialIcon platform="youtube" href="#" />
+            <SocialIcon platform="linkedin" href="#" />
+          </>
+        }
+      />
+    </GradientBackdrop>
+  ),
 };

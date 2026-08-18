@@ -1,3 +1,5 @@
+import { cn } from '@/lib/cn';
+
 /**
  * The "currently selected page" treatment, extracted so any nav element
  * (logo pill, a NavLink, or the About NavDropdown trigger) can wear it —
@@ -22,11 +24,9 @@ function DripShape({ className, fill }: { className?: string; fill: string }) {
   return (
     <svg
       aria-hidden
-      width='163'
-      height='59'
       viewBox='0 0 163 59'
       fill='none'
-      className={className}
+      className={cn('h-6.5 w-18 sm:h-14.75 sm:w-40.75', className)}
       xmlns='http://www.w3.org/2000/svg'>
       <path
         d='M117.718 43.0809C114.288 52.0916 106.005 59 96.3636 59H66.6363C56.9952 59 48.7115 52.0916 45.2822 43.0809C39.0589 26.7285 25.7416 3.21772 0 5.90005e-05C38.0004 -4.224e-05 132 6.62787e-06 163 5.89412e-05C137.258 3.21772 123.941 26.7285 117.718 43.0809Z'

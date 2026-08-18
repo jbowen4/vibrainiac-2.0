@@ -51,7 +51,12 @@ export default function AboutTeamPage() {
         <div className="flex min-h-screen flex-col">
           <Container>
             <Navbar
-              start={<NavLink href="/games">GAMES</NavLink>}
+              start={
+                <>
+                  <NavLink href="/about/news">NEWS</NavLink>
+                  <NavLink href="/games">GAMES</NavLink>
+                </>
+              }
               end={
                 <>
                   <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />

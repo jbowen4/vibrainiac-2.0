@@ -15,7 +15,6 @@ const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
   { label: "Our Values", href: "/about/values" },
   { label: "For Partners", href: "/about/partners" },
-  { label: "News", href: "/about/news" },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
@@ -56,7 +55,12 @@ export default function Home() {
           <Container>
             <Navbar
               homeActive
-              start={<NavLink href="/games">GAMES</NavLink>}
+              start={
+                <>
+                  <NavLink href="/about/news">NEWS</NavLink>
+                  <NavLink href="/games">GAMES</NavLink>
+                </>
+              }
               end={
                 <>
                   <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
