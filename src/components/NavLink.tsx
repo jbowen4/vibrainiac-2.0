@@ -1,8 +1,11 @@
+'use client';
+
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 
 import { cn } from '@/lib/cn';
-import { NavActiveDrip } from '@/components/NavActiveDrip';
+import { MobileNavContext } from '@/components/MobileNavContext';
+import { MobileNavActiveBar, NavActiveDrip } from '@/components/NavActiveDrip';
 
 export interface NavLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /** Marks this as the current page — applies the brand glow and the ActiveIndicatorDrip. */
@@ -34,13 +37,17 @@ export function NavLink({
   children,
   ...props
 }: NavLinkProps) {
+  const mobile = useContext(MobileNavContext);
+
   return (
-    <span className='relative inline-flex items-center self-stretch'>
-      {active && <NavActiveDrip />}
+    <span
+      className={cn('relative inline-flex items-center', !mobile && 'self-stretch')}>
+      {active && (mobile ? <MobileNavActiveBar /> : <NavActiveDrip />)}
       <a
         aria-current={active ? 'page' : undefined}
         className={cn(
           'relative font-sans text-body-sm tracking-wide transition-colors duration-(--transition-fast) ease-standard',
+          mobile && 'px-6 py-2',
           active
             ? 'font-bold text-text-inverse text-center'
             : 'font-medium text-text-primary hover:text-accent-primary',

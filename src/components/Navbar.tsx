@@ -1,10 +1,18 @@
+'use client';
+
 import type { ReactNode } from 'react';
+import { useContext, useState } from 'react';
 import Link from 'next/link';
 import { DropdownMenu } from 'radix-ui';
 
 import { cn } from '@/lib/cn';
 import { Logo } from '@/components/Logo';
-import { ActiveIndicatorBar, NavActiveDrip } from '@/components/NavActiveDrip';
+import { MobileNavContext } from '@/components/MobileNavContext';
+import {
+  ActiveIndicatorBar,
+  MobileNavActiveBar,
+  NavActiveDrip,
+} from '@/components/NavActiveDrip';
 
 export interface NavDropdownItem {
   label: string;
@@ -31,15 +39,17 @@ export function NavDropdown({
   active = false,
 }: NavDropdownProps) {
   const activeItem = items.find((item) => item.active);
+  const mobile = useContext(MobileNavContext);
 
   return (
-    <div className='relative flex items-center self-stretch'>
-      {active && <NavActiveDrip />}
+    <div className={cn('relative flex items-center', !mobile && 'self-stretch')}>
+      {active && (mobile ? <MobileNavActiveBar /> : <NavActiveDrip />)}
       <DropdownMenu.Root>
         <DropdownMenu.Trigger
           className={cn(
             'relative inline-flex cursor-pointer flex-col items-center gap-1 font-sans text-body-sm outline-none',
             'transition-colors duration-(--transition-fast) ease-standard',
+            mobile && 'px-6 py-2',
             active
               ? 'font-bold text-text-inverse'
               : 'font-medium text-text-primary hover:text-accent-primary',
@@ -123,6 +133,8 @@ export function Navbar({
   homeActive = false,
   className,
 }: NavbarProps) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
     <nav
       className={cn(
@@ -134,9 +146,9 @@ export function Navbar({
       <div aria-hidden />
 
       <div className='flex flex-wrap items-center justify-center gap-x-3 gap-y-2 whitespace-nowrap md:flex-nowrap md:gap-16'>
-        {start}
+        <div className='hidden md:contents'>{start}</div>
         <div className='relative flex items-center self-stretch'>
-          {homeActive && <NavActiveDrip />}
+          {homeActive && !mobileOpen && <NavActiveDrip />}
           <Link
             href='/'
             className={cn(
@@ -145,12 +157,52 @@ export function Navbar({
             {logo ?? <Logo size={50} variant={homeActive ? 'dark' : 'light'} />}
           </Link>
         </div>
-        {end}
+        <div className='hidden md:contents'>{end}</div>
       </div>
 
-      <div className='hidden items-center gap-5 justify-self-end md:flex'>
-        {social}
+      <div className='flex items-center gap-4 justify-self-end'>
+        <div className='hidden items-center gap-5 md:flex'>{social}</div>
+        <button
+          type='button'
+          aria-expanded={mobileOpen}
+          aria-controls='mobile-nav-panel'
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          onClick={() => setMobileOpen((open) => !open)}
+          className='relative inline-flex size-8 shrink-0 flex-col items-center justify-center gap-1.5 md:hidden'>
+          <span
+            className={cn(
+              'h-0.5 w-6 rounded-full bg-text-primary transition-transform duration-(--transition-fast) ease-standard',
+              mobileOpen && 'translate-y-2 rotate-45',
+            )}
+          />
+          <span
+            className={cn(
+              'h-0.5 w-6 rounded-full bg-text-primary transition-opacity duration-(--transition-fast) ease-standard',
+              mobileOpen && 'opacity-0',
+            )}
+          />
+          <span
+            className={cn(
+              'h-0.5 w-6 rounded-full bg-text-primary transition-transform duration-(--transition-fast) ease-standard',
+              mobileOpen && '-translate-y-2 -rotate-45',
+            )}
+          />
+        </button>
       </div>
+
+      {mobileOpen && (
+        <div
+          id='mobile-nav-panel'
+          className='absolute top-full left-1/2 z-40 w-screen -translate-x-1/2 md:hidden'>
+          <div className='flex flex-col items-center gap-8 border-t border-border-hairline/40 bg-background-primary px-6 py-8 shadow-elevated'>
+            <MobileNavContext.Provider value={true}>
+              <div className='flex flex-col items-center gap-6'>{start}</div>
+              <div className='flex flex-col items-center gap-6'>{end}</div>
+            </MobileNavContext.Provider>
+            <div className='flex items-center gap-5'>{social}</div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

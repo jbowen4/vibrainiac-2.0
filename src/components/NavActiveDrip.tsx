@@ -68,3 +68,19 @@ export function NavActiveDrip() {
     </>
   );
 }
+
+/**
+ * Mobile-panel equivalent of `NavActiveDrip` — a solid white bar spanning
+ * the full viewport width behind the active item's row, rather than the
+ * drip shape. Sized to the height of its positioned wrapper via
+ * `inset-y-0`, so the wrapper just needs `relative` and whatever padding
+ * gives the row its height.
+ */
+export function MobileNavActiveBar() {
+  return (
+    <span
+      aria-hidden
+      className='pointer-events-none absolute inset-y-0 left-1/2 w-screen -translate-x-1/2 bg-text-primary'
+    />
+  );
+}

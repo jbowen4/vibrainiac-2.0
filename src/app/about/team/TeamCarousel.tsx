@@ -99,6 +99,7 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
 
   return (
     <div className="flex w-full flex-col items-center">
+      <div className="hidden w-full flex-col items-center md:flex">
       <div
         ref={trackRef}
         role="group"
@@ -176,6 +177,30 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
           </div>
         </div>
       </div>
+      </div>
+
+      <ul className="flex w-full flex-col gap-8 px-6 md:hidden">
+        {members.map((member) => (
+          <li
+            key={member.name}
+            className="flex gap-4 border-l-[3px] border-accent-secondary pl-4 sm:gap-5">
+            {/* eslint-disable-next-line @next/next/no-img-element -- generated data-URI placeholder, not an optimizable asset */}
+            <img
+              src={member.avatar}
+              alt={member.name}
+              className="size-20 shrink-0 rounded-full border border-text-primary object-cover shadow-elevated"
+            />
+            <div className="flex flex-col gap-2">
+              <h2 className="font-sans text-heading-sm font-bold text-accent-secondary uppercase leading-tight">
+                {member.name} | {member.title}
+              </h2>
+              <Text size="base" weight="light">
+                {member.description}
+              </Text>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

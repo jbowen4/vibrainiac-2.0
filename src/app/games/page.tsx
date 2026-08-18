@@ -73,8 +73,8 @@ export default function GamesPage() {
 
         <div className="flex flex-1 flex-col md:min-h-0 md:overflow-hidden">
           <Container className="flex w-full flex-1 flex-col justify-center py-8 md:min-h-0 md:py-5">
-            <div className="grid flex-1 grid-cols-1 gap-10 md:min-h-0 md:grid-cols-2 md:gap-8 lg:gap-14">
-              <div className="order-2 flex flex-col items-start justify-center gap-6 rounded-lg bg-white/5 p-6 sm:p-8 md:order-1">
+            <div className="grid flex-1 grid-cols-1 items-center gap-10 md:min-h-0 md:grid-cols-2 md:gap-8 lg:gap-14">
+              <div className="order-2 flex flex-col items-start gap-6 rounded-lg bg-white/5 p-6 sm:p-8 md:order-1">
                 <span
                   className="relative inline-flex items-center py-2 pr-5 pl-4 text-caption font-bold text-text-inverse shadow-elevated"
                   style={{
@@ -136,7 +136,7 @@ export default function GamesPage() {
                 </div>
               </div>
 
-              <div className="relative order-1 flex h-[42vh] w-full items-center justify-center sm:h-[50vh] md:order-2 md:h-full md:min-h-0">
+              <div className="relative order-1 flex h-[42vh] w-full items-center justify-center sm:h-[50vh] md:order-2 md:h-[48vh] lg:h-[56vh]">
                 <div className="relative h-full w-full">
                   <Image
                     src={innerverseOwl}

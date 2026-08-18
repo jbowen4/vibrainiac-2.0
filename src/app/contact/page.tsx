@@ -8,6 +8,7 @@ import { Heading } from '@/components/Heading';
 import { NavDropdown, Navbar } from '@/components/Navbar';
 import { NavLink } from '@/components/NavLink';
 import { SocialIcon, type SocialPlatform } from '@/components/SocialIcon';
+import contactUsText from '../../../public/contact/contact-us-text.png';
 import heroBackground from '../../../public/home/hero-background.png';
 
 const ABOUT_ITEMS = [
@@ -106,17 +107,13 @@ export default function ContactPage() {
           <div className='flex-1 py-16 sm:py-24'>
             <Container>
               <div className='mx-auto flex w-full max-w-4xl flex-col items-center gap-10 sm:gap-14'>
-                <Heading
-                  size='display'
-                  className='text-center'
-                  style={{ textTransform: 'none' }}>
-                  contact us
-                  {/* <Image
+                <Heading size='display' as='h1' className='flex justify-center'>
+                  <Image
                     src={contactUsText}
-                    alt='Vibrainiac Games'
+                    alt='Contact Us'
                     priority
                     className='h-auto w-full max-w-sm sm:max-w-xl'
-                  /> */}
+                  />
                 </Heading>
                 <Accordion items={CONTACT_ITEMS} />
               </div>
