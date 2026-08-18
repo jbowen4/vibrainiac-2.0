@@ -42,12 +42,13 @@ export function NavDropdown({
   const mobile = useContext(MobileNavContext);
 
   return (
-    <div className={cn('relative flex items-center', !mobile && 'self-stretch')}>
+    <div
+      className={cn('relative flex items-center', !mobile && 'self-stretch')}>
       {active && (mobile ? <MobileNavActiveBar /> : <NavActiveDrip />)}
       <DropdownMenu.Root>
         <DropdownMenu.Trigger
           className={cn(
-            'relative inline-flex cursor-pointer flex-col items-center gap-1 font-sans text-body-sm outline-none',
+            'relative inline-flex cursor-pointer flex-col items-center gap-0.5 font-sans text-body-sm outline-none mt-2.5',
             'transition-colors duration-(--transition-fast) ease-standard',
             mobile && 'px-6 py-2',
             active
@@ -84,7 +85,7 @@ export function NavDropdown({
                     'transition-colors duration-(--transition-fast) ease-standard',
                     item.active
                       ? 'bg-text-primary text-text-inverse'
-                      : 'text-text-inverse hover:text-accent-primary hover:drop-shadow-(--shadow-glow-accent) data-highlighted:text-accent-primary',
+                      : 'text-white hover:text-accent-primary hover:drop-shadow-(--shadow-glow-accent) data-highlighted:text-accent-primary',
                   )}>
                   {item.label}
                 </a>

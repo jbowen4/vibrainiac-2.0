@@ -35,7 +35,6 @@ const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
 const FOOTER_LINKS = [
   { label: "Terms of Service", href: "/terms-of-service" },
   { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Parent's Guide", href: "/parents-guide" },
   { label: "Safe and Fair Play Policy", href: "/safe-and-fair-play" },
   { label: "Accessibility Statement", href: "/accessibility" },
   { label: "Other Legal Docs", href: "/legal" },
@@ -78,7 +77,7 @@ export default function AboutTeamPage() {
       <Footer
         links={FOOTER_LINKS}
         socialLinks={FOOTER_SOCIAL_LINKS}
-        address={"212 E International Airport Rd\nAnchorage, AK 99518\nUnited States"}
+        address={"225 N. French Avenue, Suite C\nSanford, FL 32771\nUnited States"}
       />
     </>
   );

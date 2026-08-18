@@ -38,7 +38,6 @@ const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
 const FOOTER_LINKS = [
   { label: 'Terms of Service', href: '/terms-of-service' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: "Parent's Guide", href: '/parents-guide' },
   { label: 'Safe and Fair Play Policy', href: '/safe-and-fair-play' },
   { label: 'Accessibility Statement', href: '/accessibility' },
   { label: 'Other Legal Docs', href: '/legal' },
