@@ -1,26 +1,31 @@
 import type { AnchorHTMLAttributes } from "react";
 
 import { cn } from "@/lib/cn";
+import { NavActiveDrip } from "@/components/NavActiveDrip";
 
 export interface NavLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  /** Applies the brand glow used to mark the current section (e.g. "For Partners", "Our Value"). */
+  /** Marks this as the current page — applies the brand glow and the ActiveIndicatorDrip. */
   active?: boolean;
 }
 
 /** Single top-level nav item — "ABOUT", "GAMES", "CONTACT US", ... */
 export function NavLink({ active = false, className, children, ...props }: NavLinkProps) {
   return (
-    <a
-      className={cn(
-        "font-sans text-body-sm font-medium tracking-wide transition-colors duration-(--transition-fast) ease-standard",
-        active
-          ? "text-accent-primary drop-shadow-[var(--shadow-glow-accent)]"
-          : "text-text-primary hover:text-accent-primary",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </a>
+    <span className="relative inline-block">
+      {active && <NavActiveDrip />}
+      <a
+        aria-current={active ? "page" : undefined}
+        className={cn(
+          "relative font-sans text-body-sm font-medium tracking-wide transition-colors duration-(--transition-fast) ease-standard",
+          active
+            ? "text-accent-primary drop-shadow-(--shadow-glow-accent)"
+            : "text-text-primary hover:text-accent-primary",
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </a>
+    </span>
   );
 }
