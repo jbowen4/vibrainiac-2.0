@@ -6,37 +6,42 @@ const meta = {
   title: "Foundation/Button",
   component: Button,
   parameters: { layout: "padded" },
+  argTypes: {
+    variant: { control: "select", options: ["outline", "solid"] },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: { children: "Read More" },
+export const Outline: Story = {
+  args: { variant: "outline", children: "Read More" },
+};
+
+export const Solid: Story = {
+  args: { variant: "solid", children: "Meet the Team" },
 };
 
 export const AsLink: Story = {
-  args: { href: "#", children: "Visit Site" },
+  args: { variant: "outline", href: "#", children: "Visit Site" },
 };
 
 export const Disabled: Story = {
-  args: { children: "Watch on YouTube", disabled: true },
-};
-
-export const Hover: Story = {
-  args: { children: "Read More", className: "bg-accent-primary text-text-primary" },
-  parameters: {
-    docs: { description: { story: "Simulates the hover state (filled accent background)." } },
-  },
+  args: { variant: "solid", children: "Meet the Team", disabled: true },
 };
 
 export const States: Story = {
   args: { children: null },
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
-      <Button>Read More</Button>
-      <Button disabled>Disabled</Button>
-      <Button href="#">Visit Site</Button>
+      <Button variant="outline">Read More</Button>
+      <Button variant="solid">Meet the Team</Button>
+      <Button variant="solid" disabled>
+        Disabled
+      </Button>
+      <Button variant="outline" href="#">
+        Visit Site
+      </Button>
     </div>
   ),
 };

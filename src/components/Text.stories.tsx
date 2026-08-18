@@ -7,11 +7,12 @@ const meta = {
   component: Text,
   parameters: { layout: "padded" },
   argTypes: {
-    size: { control: "select", options: ["lg", "base", "sm", "caption"] },
+    size: { control: "select", options: ["xl", "lg", "base", "sm", "caption"] },
     tone: {
       control: "select",
       options: ["primary", "secondary", "muted", "accent"],
     },
+    weight: { control: "select", options: ["light", "regular"] },
   },
 } satisfies Meta<typeof Text>;
 
@@ -32,6 +33,15 @@ export const Secondary: Story = {
     size: "lg",
     tone: "secondary",
     children: "212 E International Airport Rd Anchorage, AK 99518 United States",
+  },
+};
+
+export const Lead: Story = {
+  args: {
+    size: "xl",
+    weight: "regular",
+    children:
+      "Vibrainiac is an independent game development studio founded by a team with over 20 years of collective AAA experience.",
   },
 };
 

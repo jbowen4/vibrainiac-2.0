@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { GradientBackdrop } from "./GradientBackdrop";
 import { NavDropdown, Navbar } from "./Navbar";
 import { NavLink } from "./NavLink";
+import { SocialIcon } from "./SocialIcon";
 
 const ABOUT_ITEMS = [
   { label: "The Team", href: "#team" },
@@ -21,27 +22,51 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: { children: null },
   render: () => (
     <GradientBackdrop className="p-6">
-      <Navbar>
-        <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
-        <NavLink href="#">GAMES</NavLink>
-        <NavLink href="#">CONTACT US</NavLink>
-      </Navbar>
+      <Navbar
+        start={<NavLink href="#">GAMES</NavLink>}
+        end={
+          <>
+            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
+            <NavLink href="#">CONTACT US</NavLink>
+          </>
+        }
+        social={
+          <>
+            <SocialIcon platform="x" href="#" />
+            <SocialIcon platform="tiktok" href="#" />
+            <SocialIcon platform="instagram" href="#" />
+            <SocialIcon platform="youtube" href="#" />
+            <SocialIcon platform="linkedin" href="#" />
+          </>
+        }
+      />
     </GradientBackdrop>
   ),
 };
 
 export const DropdownOpen: Story = {
-  args: { children: null },
   render: () => (
     <GradientBackdrop className="p-6 pb-64">
-      <Navbar>
-        <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
-        <NavLink href="#">GAMES</NavLink>
-        <NavLink href="#">CONTACT US</NavLink>
-      </Navbar>
+      <Navbar
+        start={<NavLink href="#">GAMES</NavLink>}
+        end={
+          <>
+            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+            <NavLink href="#">CONTACT US</NavLink>
+          </>
+        }
+        social={
+          <>
+            <SocialIcon platform="x" href="#" />
+            <SocialIcon platform="tiktok" href="#" />
+            <SocialIcon platform="instagram" href="#" />
+            <SocialIcon platform="youtube" href="#" />
+            <SocialIcon platform="linkedin" href="#" />
+          </>
+        }
+      />
     </GradientBackdrop>
   ),
   play: async ({ canvasElement }) => {

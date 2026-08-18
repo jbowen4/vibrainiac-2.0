@@ -26,19 +26,22 @@ export function NavDropdown({ label, items, active = false }: NavDropdownProps) 
       <DropdownMenu.Trigger
         className={cn(
           "inline-flex cursor-pointer items-center gap-1 font-sans text-body-sm font-medium outline-none",
-          "transition-colors duration-(--transition-fast) ease-(--ease-standard)",
+          "transition-colors duration-(--transition-fast) ease-standard",
           active
             ? "text-accent-primary drop-shadow-[var(--shadow-glow-accent)]"
             : "text-text-primary hover:text-accent-primary"
         )}
       >
         {label}
-        <svg
-          aria-hidden
-          viewBox="0 0 12 8"
-          className="size-2.5 fill-current"
-        >
-          <path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" strokeWidth={1.5} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <svg aria-hidden viewBox="0 0 12 8" className="size-2.5">
+          <path
+            d="M1 1.5 6 6.5 11 1.5"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </svg>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
@@ -56,7 +59,7 @@ export function NavDropdown({ label, items, active = false }: NavDropdownProps) 
                 href={item.href}
                 className={cn(
                   "block cursor-pointer select-none rounded-sm px-3 py-2 text-body-sm font-medium text-text-inverse outline-none",
-                  "transition-colors duration-(--transition-fast) ease-(--ease-standard)",
+                  "transition-colors duration-(--transition-fast) ease-standard",
                   "hover:text-accent-primary hover:drop-shadow-[var(--shadow-glow-accent)] data-[highlighted]:text-accent-primary"
                 )}
               >
@@ -71,34 +74,46 @@ export function NavDropdown({ label, items, active = false }: NavDropdownProps) 
 }
 
 export interface NavbarProps {
-  /** Nav items rendered after the logo — plain `NavLink`s or a `NavDropdown`. */
-  children: ReactNode;
+  /** Nav items rendered before the logo pill (e.g. "GAMES"). */
+  start?: ReactNode;
+  /** Nav items rendered after the logo pill (e.g. "ABOUT" dropdown, "CONTACT US"). */
+  end?: ReactNode;
+  /** Icons pinned to the far right edge, independent of the centered nav cluster. */
+  social?: ReactNode;
   logo?: ReactNode;
   className?: string;
 }
 
 /**
- * Site header: the glass logo pill on the left (matches the "Frame 2"
- * capsule measured on every page — radius-lg, ambient shadow, ~40px
- * horizontal / 15px vertical padding) and the nav item list on the right.
+ * Site header: a centered cluster (nav links either side of the glass
+ * logo pill — the "Frame 2" capsule measured on every page: radius-lg,
+ * ambient shadow, ~40px horizontal / 15px vertical padding) with social
+ * icons pinned to the right edge.
  */
-export function Navbar({ children, logo, className }: NavbarProps) {
+export function Navbar({ start, end, social, logo, className }: NavbarProps) {
   return (
     <nav
       className={cn(
-        "flex w-full items-center justify-between gap-6 py-6",
+        "grid w-full grid-cols-[1fr_auto_1fr] items-center gap-3 py-6 sm:gap-6",
         className
       )}
     >
-      <div
-        className={cn(
-          "inline-flex items-center gap-[10px] rounded-lg bg-background-secondary/70 py-[15px] pr-[39px] pl-10",
-          "backdrop-blur-glass-sm shadow-elevated"
-        )}
-      >
-        {logo ?? <Logo />}
+      <div aria-hidden />
+
+      <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 whitespace-nowrap md:flex-nowrap md:gap-8">
+        {start}
+        <div
+          className={cn(
+            "order-first inline-flex shrink-0 items-center justify-center rounded-lg bg-background-secondary/70 p-3 md:order-0 md:p-4",
+            "backdrop-blur-glass-sm shadow-elevated"
+          )}
+        >
+          {logo ?? <Logo />}
+        </div>
+        {end}
       </div>
-      <div className="flex items-center gap-8">{children}</div>
+
+      <div className="hidden items-center gap-5 justify-self-end md:flex">{social}</div>
     </nav>
   );
 }

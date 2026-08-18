@@ -1,29 +1,24 @@
-import type { ReactNode } from "react";
+import Image from "next/image";
 
 import { cn } from "@/lib/cn";
+import brainIcon from "../../public/brand/brain-icon.png";
 
 export interface LogoProps {
-  /** Slot for the mark/icon asset, rendered ahead of the wordmark. Left empty until a final logo asset exists. */
-  icon?: ReactNode;
+  size?: number;
   className?: string;
 }
 
-/**
- * "VIBRAINIAC" wordmark — appears identically, in accent blue with a soft
- * brand glow, inside the nav pill on every sampled page. The icon mark
- * itself wasn't extractable as vector data, so it's left as a slot.
- */
-export function Logo({ icon, className }: LogoProps) {
+/** Brain/circuit mark — the site's icon-only wordmark, used in the nav pill and the footer. */
+export function Logo({ size = 28, className }: LogoProps) {
+  const height = Math.round((size * brainIcon.height) / brainIcon.width);
+
   return (
-    <span
-      className={cn(
-        "inline-flex items-center gap-2 font-sans text-body-sm font-extrabold uppercase tracking-normal text-accent-primary",
-        "drop-shadow-[var(--shadow-glow-brand)]",
-        className
-      )}
-    >
-      {icon}
-      VIBRAINIAC
-    </span>
+    <Image
+      src={brainIcon}
+      alt="Vibrainiac Games"
+      width={size}
+      height={height}
+      className={cn("shrink-0", className)}
+    />
   );
 }

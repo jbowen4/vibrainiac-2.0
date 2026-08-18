@@ -3,6 +3,7 @@ import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 const SIZE_STYLES = {
+  xl: "text-heading-md leading-relaxed",
   lg: "text-body-lg leading-relaxed",
   base: "text-body leading-relaxed",
   sm: "text-body-sm leading-normal",
@@ -16,12 +17,19 @@ const TONE_STYLES = {
   accent: "text-accent-primary",
 } as const;
 
+const WEIGHT_STYLES = {
+  light: "font-light",
+  regular: "font-regular",
+} as const;
+
 export type TextSize = keyof typeof SIZE_STYLES;
 export type TextTone = keyof typeof TONE_STYLES;
+export type TextWeight = keyof typeof WEIGHT_STYLES;
 
 type TextOwnProps<T extends ElementType> = {
   size?: TextSize;
   tone?: TextTone;
+  weight?: TextWeight;
   as?: T;
   className?: string;
   children: ReactNode;
@@ -34,6 +42,7 @@ export type TextProps<T extends ElementType = "p"> = TextOwnProps<T> &
 export function Text<T extends ElementType = "p">({
   size = "base",
   tone = "primary",
+  weight = "light",
   as,
   className,
   children,
@@ -44,9 +53,10 @@ export function Text<T extends ElementType = "p">({
   return (
     <Tag
       className={cn(
-        "font-sans font-light",
+        "font-sans",
         SIZE_STYLES[size],
         TONE_STYLES[tone],
+        WEIGHT_STYLES[weight],
         className
       )}
       {...rest}

@@ -12,7 +12,7 @@ export function NavLink({ active = false, className, children, ...props }: NavLi
   return (
     <a
       className={cn(
-        "font-sans text-body-sm font-medium transition-colors duration-(--transition-fast) ease-(--ease-standard)",
+        "font-sans text-body-sm font-medium tracking-wide transition-colors duration-(--transition-fast) ease-standard",
         active
           ? "text-accent-primary drop-shadow-[var(--shadow-glow-accent)]"
           : "text-text-primary hover:text-accent-primary",
