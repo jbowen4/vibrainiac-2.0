@@ -1,4 +1,3 @@
-import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";
 import { Card, CardBody, CardMedia } from "@/components/Card";
 import { Heading } from "@/components/Heading";
@@ -33,24 +32,30 @@ export function NewsCard({
   className,
 }: NewsCardProps) {
   return (
-    <Card className={cn("h-full", className)}>
-      <CardMedia src={image} alt={imageAlt} placeholder={!image} />
-      <CardBody className="flex-1">
-        {isNew && (
-          <Badge tone="live" dot>
-            New!
-          </Badge>
-        )}
-        <Heading size="md" className="line-clamp-2">
-          {title}
-        </Heading>
-        <Text size="sm" tone="secondary" className="line-clamp-3 flex-1">
-          {description}
-        </Text>
-        <Button href={href} className="mt-auto self-start">
-          {buttonLabel}
-        </Button>
-      </CardBody>
-    </Card>
+    <div className={cn("relative h-139 w-87.75", className)}>
+      {isNew && (
+        <span
+          aria-hidden={false}
+          className="absolute -top-3 -left-3 z-10 flex h-9 items-center bg-status-live pl-4 pr-6 text-caption font-bold text-text-inverse"
+          style={{ clipPath: "polygon(0% 0%, 100% 0%, 78% 100%, 0% 100%)" }}
+        >
+          New!
+        </span>
+      )}
+      <Card className="h-full">
+        <CardMedia src={image} alt={imageAlt} placeholder={!image} />
+        <CardBody className="flex-1">
+          <Heading size="md" className="line-clamp-2">
+            {title}
+          </Heading>
+          <Text size="sm" tone="secondary" className="line-clamp-3 flex-1">
+            {description}
+          </Text>
+          <Button href={href} className="mt-auto self-start">
+            {buttonLabel}
+          </Button>
+        </CardBody>
+      </Card>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
-import Image from "next/image";
-import type { ReactNode } from "react";
+import Image from 'next/image';
+import type { ReactNode } from 'react';
 
-import { cn } from "@/lib/cn";
+import { cn } from '@/lib/cn';
 
 export interface CardProps {
   className?: string;
@@ -19,11 +19,10 @@ export function Card({ className, children }: CardProps) {
   return (
     <div
       className={cn(
-        "flex flex-col overflow-hidden rounded-md bg-background-secondary/60",
-        "backdrop-blur-glass-md shadow-card",
-        className
-      )}
-    >
+        'flex flex-col overflow-hidden rounded-md bg-background-secondary/60',
+        'backdrop-blur-glass-md shadow-card',
+        className,
+      )}>
       {children}
     </div>
   );
@@ -41,23 +40,25 @@ export interface CardMediaProps {
 /** Thumbnail slot for `Card` — falls back to the design system's placeholder gradient. */
 export function CardMedia({
   src,
-  alt = "",
+  alt = '',
   placeholder = !src,
-  aspectRatio = "16 / 9",
+  aspectRatio = '16 / 9',
   className,
 }: CardMediaProps) {
   return (
     <div
-      className={cn("relative w-full overflow-hidden", className)}
-      style={{ aspectRatio }}
-    >
+      className={cn('relative w-full overflow-hidden', className)}
+      style={{ aspectRatio }}>
       {placeholder || !src ? (
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[image:var(--gradient-image-placeholder)]"
+        <Image
+          src={'/news/forest-background.png'}
+          alt={alt}
+          fill
+          sizes='100vw'
+          className='object-cover'
         />
       ) : (
-        <Image src={src} alt={alt} fill className="object-cover" />
+        <Image src={src} alt={alt} fill className='object-cover' />
       )}
     </div>
   );
@@ -71,6 +72,6 @@ export interface CardBodyProps {
 /** Padded content region below `CardMedia`. */
 export function CardBody({ className, children }: CardBodyProps) {
   return (
-    <div className={cn("flex flex-col gap-3 p-6", className)}>{children}</div>
+    <div className={cn('flex flex-col gap-3 p-6', className)}>{children}</div>
   );
 }

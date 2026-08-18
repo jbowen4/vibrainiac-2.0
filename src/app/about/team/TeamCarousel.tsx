@@ -8,6 +8,10 @@ import type { TeamMember } from "./team-members";
 
 const OFFSETS = [-2, -1, 0, 1, 2];
 const AUTO_ADVANCE_MS = 4500;
+/** Cumulative horizontal wheel delta (px) needed before a scroll gesture advances a step. */
+const SCROLL_STEP_THRESHOLD = 60;
+/** Cooldown (ms) after a step-triggering scroll before another can fire, so one continuous trackpad swipe doesn't blow through several members. */
+const SCROLL_STEP_COOLDOWN_MS = 350;
 
 function mod(n: number, m: number) {
   return ((n % m) + m) % m;
@@ -59,9 +63,44 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
     return () => window.clearInterval(id);
   }, []);
 
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  // React attaches its synthetic `onWheel` listener as passive, so
+  // preventDefault() inside a JSX handler is silently ignored — a native
+  // listener is required to stop horizontal trackpad scroll from also
+  // triggering the browser's swipe-navigation gesture.
+  useEffect(() => {
+    const node = trackRef.current;
+    if (!node) return;
+
+    let accumulated = 0;
+    let cooling = false;
+
+    const handleWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return;
+      event.preventDefault();
+
+      if (cooling) return;
+      accumulated += event.deltaX;
+
+      if (Math.abs(accumulated) >= SCROLL_STEP_THRESHOLD) {
+        setPosition((p) => p + (accumulated > 0 ? 1 : -1));
+        accumulated = 0;
+        cooling = true;
+        window.setTimeout(() => {
+          cooling = false;
+        }, SCROLL_STEP_COOLDOWN_MS);
+      }
+    };
+
+    node.addEventListener("wheel", handleWheel, { passive: false });
+    return () => node.removeEventListener("wheel", handleWheel);
+  }, []);
+
   return (
     <div className="flex w-full flex-col items-center">
       <div
+        ref={trackRef}
         role="group"
         aria-label="Team members"
         tabIndex={0}

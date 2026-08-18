@@ -81,7 +81,10 @@ export default function AboutNewsPage() {
 
           <div className="flex-1 py-16 sm:py-24">
             <Container>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div
+                className="grid justify-center gap-12.5"
+                style={{ gridTemplateColumns: "repeat(auto-fit, 351px)" }}
+              >
                 {NEWS_ITEMS.map((item) => (
                   <NewsCard key={item.title} {...item} />
                 ))}

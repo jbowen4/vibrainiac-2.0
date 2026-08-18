@@ -19,14 +19,22 @@ export function ActiveIndicatorBar() {
   );
 }
 
-/** A flat-topped shape that sags into one smooth curve at the center — the "trapezoid-ish" dip from the reference. */
+/**
+ * A flat-topped shape that sags into one smooth curve at the center — the
+ * "trapezoid-ish" dip from the reference. Stretches to the full width of
+ * its positioned parent (`preserveAspectRatio="none"`) rather than using a
+ * fixed pixel width, so it scales to encapsulate whatever nav item it's
+ * wrapping — a short "NEWS" tab and a long "CONTACT US" tab both get a
+ * drip sized to their own rendered width instead of sharing one fixed size.
+ */
 function DripShape({ className, fill }: { className?: string; fill: string }) {
   return (
     <svg
       aria-hidden
       viewBox='0 0 163 59'
+      preserveAspectRatio='none'
       fill='none'
-      className={cn('h-6.5 w-18 sm:h-14.75 sm:w-40.75', className)}
+      className={cn('h-6.5 w-18 sm:h-15 sm:w-60', className)}
       xmlns='http://www.w3.org/2000/svg'>
       <path
         d='M117.718 43.0809C114.288 52.0916 106.005 59 96.3636 59H66.6363C56.9952 59 48.7115 52.0916 45.2822 43.0809C39.0589 26.7285 25.7416 3.21772 0 5.90005e-05C38.0004 -4.224e-05 132 6.62787e-06 163 5.89412e-05C137.258 3.21772 123.941 26.7285 117.718 43.0809Z'

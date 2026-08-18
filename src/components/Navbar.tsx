@@ -38,11 +38,11 @@ export function NavDropdown({
       <DropdownMenu.Root>
         <DropdownMenu.Trigger
           className={cn(
-            'relative inline-flex cursor-pointer items-center gap-1 font-sans text-body-sm font-medium outline-none',
+            'relative inline-flex cursor-pointer flex-col items-center gap-1 font-sans text-body-sm outline-none',
             'transition-colors duration-(--transition-fast) ease-standard',
             active
-              ? 'text-accent-primary drop-shadow-(--shadow-glow-accent)'
-              : 'text-text-primary hover:text-accent-primary',
+              ? 'font-bold text-text-inverse'
+              : 'font-medium text-text-primary hover:text-accent-primary',
           )}>
           {label}
           <svg aria-hidden viewBox='0 0 12 8' className='size-2.5'>
