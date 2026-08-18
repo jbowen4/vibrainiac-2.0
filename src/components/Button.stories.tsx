@@ -7,7 +7,7 @@ const meta = {
   component: Button,
   parameters: { layout: "padded" },
   argTypes: {
-    variant: { control: "select", options: ["outline", "solid"] },
+    variant: { control: "select", options: ["outline", "solid", "ghost"] },
   },
 } satisfies Meta<typeof Button>;
 
@@ -20,6 +20,10 @@ export const Outline: Story = {
 
 export const Solid: Story = {
   args: { variant: "solid", children: "Meet the Team" },
+};
+
+export const Ghost: Story = {
+  args: { variant: "ghost", href: "#", children: "← Return to News" },
 };
 
 export const AsLink: Story = {
@@ -41,6 +45,9 @@ export const States: Story = {
       </Button>
       <Button variant="outline" href="#">
         Visit Site
+      </Button>
+      <Button variant="ghost" href="#">
+        ← Return to News
       </Button>
     </div>
   ),

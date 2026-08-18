@@ -1,12 +1,14 @@
+import Image from "next/image";
+import { notFound } from "next/navigation";
+
 import { Container } from "@/components/Container";
 import { Footer } from "@/components/Footer";
-import { GradientBackdrop } from "@/components/GradientBackdrop";
-import { NewsCard, type NewsCardProps } from "@/components/NewsCard";
+import { NewsArticle } from "@/components/NewsArticle";
 import { NavDropdown, Navbar } from "@/components/Navbar";
 import { NavLink } from "@/components/NavLink";
 import { SocialIcon, type SocialPlatform } from "@/components/SocialIcon";
-import heroBackground from "../../../../public/home/hero-background.png";
-import { NEWS_ARTICLES } from "./news-data";
+import forestBackground from "../../../../../public/news/forest-background.png";
+import { NEWS_ARTICLES, getNewsArticle } from "../news-data";
 
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
@@ -44,19 +46,43 @@ const FOOTER_LINKS = [
   { label: "Site Map", href: "/site-map" },
 ];
 
-const NEWS_ITEMS: NewsCardProps[] = NEWS_ARTICLES.map((article) => ({
-  isNew: article.isNew,
-  title: article.title,
-  description: article.description,
-  href: article.external?.href ?? `/about/news/${article.slug}`,
-  buttonLabel: article.external?.buttonLabel,
-}));
+export function generateStaticParams() {
+  return NEWS_ARTICLES.map((article) => ({ slug: article.slug }));
+}
 
-export default function AboutNewsPage() {
+export default async function NewsArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const article = getNewsArticle(slug);
+
+  if (!article) {
+    notFound();
+  }
+
   return (
     <>
-      <GradientBackdrop backgroundImage={heroBackground} fade className="min-h-screen">
-        <div className="flex min-h-screen flex-col">
+      <div className="relative overflow-hidden bg-background-primary">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-[clamp(220px,38vh,480px)]"
+        >
+          <div className="absolute inset-0 bg-(image:--gradient-hero)" />
+          <Image
+            src={forestBackground}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background-secondary to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-b from-background-primary/0 to-background-primary" />
+        </div>
+
+        <div className="relative z-10 flex min-h-screen flex-col">
           <Container>
             <Navbar
               start={
@@ -79,17 +105,20 @@ export default function AboutNewsPage() {
             />
           </Container>
 
-          <div className="flex-1 py-16 sm:py-24">
+          <div className="flex-1 py-10 sm:py-16 lg:py-20">
             <Container>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {NEWS_ITEMS.map((item) => (
-                  <NewsCard key={item.title} {...item} />
-                ))}
-              </div>
+              <NewsArticle
+                title={article.title}
+                date={article.date}
+                body={article.body}
+                image={article.image}
+                imageAlt={article.imageAlt}
+                returnHref="/about/news"
+              />
             </Container>
           </div>
         </div>
-      </GradientBackdrop>
+      </div>
 
       <Footer
         links={FOOTER_LINKS}
