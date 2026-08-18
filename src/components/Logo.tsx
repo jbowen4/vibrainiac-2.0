@@ -1,7 +1,8 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { cn } from "@/lib/cn";
-import brainIcon from "../../public/brand/brain-icon.png";
+import { cn } from '@/lib/cn';
+import brainIcon from '../../public/brand/brain-icon.png';
+import brainIconBlack from '../../public/brand/brain-icon-black.png';
 
 export interface LogoProps {
   size?: number;
@@ -14,11 +15,11 @@ export function Logo({ size = 28, className }: LogoProps) {
 
   return (
     <Image
-      src={brainIcon}
-      alt="Vibrainiac Games"
+      src={brainIconBlack}
+      alt='Vibrainiac Games'
       width={size}
       height={height}
-      className={cn("shrink-0", className)}
+      className={cn('shrink-0', className)}
     />
   );
 }

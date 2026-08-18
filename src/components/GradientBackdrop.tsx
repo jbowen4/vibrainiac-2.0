@@ -1,12 +1,12 @@
-import Image, { type StaticImageData } from "next/image";
-import type { ReactNode } from "react";
+import Image, { type StaticImageData } from 'next/image';
+import type { ReactNode } from 'react';
 
-import { cn } from "@/lib/cn";
+import { cn } from '@/lib/cn';
 
 const BLOB_STYLES = {
-  magenta: "bg-[image:var(--gradient-blob-magenta)]",
-  sunset: "bg-[image:var(--gradient-blob-sunset)]",
-  violet: "bg-[image:var(--gradient-blob-violet)]",
+  magenta: 'bg-[image:var(--gradient-blob-magenta)]',
+  sunset: 'bg-[image:var(--gradient-blob-sunset)]',
+  violet: 'bg-[image:var(--gradient-blob-violet)]',
 } as const;
 
 export type BlobVariant = keyof typeof BLOB_STYLES;
@@ -27,9 +27,9 @@ export function DecorativeBlob({ variant, className }: DecorativeBlobProps) {
     <div
       aria-hidden
       className={cn(
-        "pointer-events-none absolute rounded-full opacity-decorative blur-3xl",
+        'pointer-events-none absolute rounded-full opacity-decorative blur-3xl',
         BLOB_STYLES[variant],
-        className
+        className,
       )}
     />
   );
@@ -60,30 +60,34 @@ export function GradientBackdrop({
   children,
 }: GradientBackdropProps) {
   return (
-    <div className={cn("relative overflow-hidden bg-background-primary", className)}>
+    <div
+      className={cn(
+        'relative overflow-hidden bg-background-primary',
+        className,
+      )}>
       {gradient && (
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[image:var(--gradient-hero)]"
+          className='pointer-events-none absolute inset-0 bg-(image:--gradient-hero)'
         />
       )}
       {backgroundImage && (
         <Image
           src={backgroundImage}
-          alt=""
+          alt=''
           fill
           priority
-          sizes="100vw"
-          className="pointer-events-none object-cover"
+          sizes='100vw'
+          className='pointer-events-none object-cover scale-150'
         />
       )}
       {fade && (
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-[image:var(--gradient-fade)]"
+          className='pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-(image:--gradient-fade)'
         />
       )}
-      <div className="relative">{children}</div>
+      <div className='relative'>{children}</div>
     </div>
   );
 }
