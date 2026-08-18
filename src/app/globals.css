@@ -69,17 +69,15 @@
   --leading-relaxed: var(--line-height-relaxed);
   --tracking-normal: var(--letter-spacing-normal);
 
-  /* Spacing */
-  --spacing-1: var(--spacing-1);
-  --spacing-2: var(--spacing-2);
-  --spacing-3: var(--spacing-3);
-  --spacing-4: var(--spacing-4);
-  --spacing-5: var(--spacing-5);
-  --spacing-6: var(--spacing-6);
-  --spacing-7: var(--spacing-7);
-  --spacing-8: var(--spacing-8);
-  --spacing-9: var(--spacing-9);
-  --spacing-10: var(--spacing-10);
+  /* Spacing — NOTE: tokens.css also defines numbered --spacing-1..10
+     aliases for documentation purposes, but they are deliberately NOT
+     remapped here. Tailwind auto-derives its numeric spacing scale
+     (p-1, gap-8, ...) from a linear "--spacing-N = N * 0.25rem" formula
+     keyed off these exact custom-property names; our scale is non-linear
+     past step 4, so binding it here would silently change what p-8/gap-9
+     etc. mean everywhere. Only the non-colliding semantic aliases are
+     exposed as utilities (gap-section-lg, py-section-md, ...); reach for
+     tokens.css var(--spacing-N) directly for the rest. */
   --spacing-section-sm: var(--spacing-section-sm);
   --spacing-section-md: var(--spacing-section-md);
   --spacing-section-lg: var(--spacing-section-lg);
