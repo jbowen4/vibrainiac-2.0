@@ -37,20 +37,24 @@ function DripShape({ className, fill }: { className?: string; fill: string }) {
 }
 
 /**
- * Drop this inside a `relative`-positioned wrapper around the active nav
- * element — it self-positions to the top of that wrapper via `-top-6`,
- * which cancels the nav's own `py-6` so the drip starts at the nav's very
+ * Drop this inside a `relative`-positioned wrapper that stretches to the
+ * full height of the nav row (`self-stretch`) around the active nav
+ * element — it self-positions to the top of that wrapper via `-top-3`,
+ * which cancels the nav's own `py-3` so the drip starts at the nav's very
  * top edge (where `ActiveIndicatorBar` sits), not the wrapper's own top.
+ * The wrapper must stretch to the row's full height, otherwise nav items
+ * shorter than the tallest sibling get vertically centered within the row
+ * and their own top no longer lines up with the nav's top edge.
  */
 export function NavActiveDrip() {
   return (
     <>
       <DripShape
-        className='pointer-events-none absolute -top-6 mt-3 left-1/2 -translate-x-1/2 bg-accent-primary opacity-80 blur-xl'
+        className='pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-primary opacity-80 blur-xl'
         fill='currentColor'
       />
       <DripShape
-        className='pointer-events-none absolute -top-6 mt-3 left-1/2 -translate-x-1/2 text-text-primary'
+        className='pointer-events-none absolute -top-3 left-1/2 -translate-x-1/2 text-text-primary'
         fill='currentColor'
       />
     </>

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Link from 'next/link';
 import { DropdownMenu } from 'radix-ui';
 
 import { cn } from '@/lib/cn';
@@ -30,7 +31,7 @@ export function NavDropdown({
   active = false,
 }: NavDropdownProps) {
   return (
-    <div className='relative'>
+    <div className='relative flex items-center self-stretch'>
       {active && <NavActiveDrip />}
       <DropdownMenu.Root>
         <DropdownMenu.Trigger
@@ -123,20 +124,15 @@ export function Navbar({
 
       <div className='flex flex-wrap items-center justify-center gap-x-3 gap-y-2 whitespace-nowrap md:flex-nowrap md:gap-16'>
         {start}
-        <div className='relative'>
+        <div className='relative flex items-center self-stretch'>
           {homeActive && <NavActiveDrip />}
-          <div
+          <Link
+            href='/'
             className={cn(
               'relative inline-flex shrink-0 items-center justify-center rounded-lg px-3 md:px-4',
             )}>
-            {logo ?? (
-              <Logo
-                size={50}
-                variant={homeActive ? 'dark' : 'light'}
-                className='cursor-pointer'
-              />
-            )}
-          </div>
+            {logo ?? <Logo size={50} variant={homeActive ? 'dark' : 'light'} />}
+          </Link>
         </div>
         {end}
       </div>

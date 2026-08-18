@@ -11,7 +11,7 @@ export interface NavLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 /** Single top-level nav item — "ABOUT", "GAMES", "CONTACT US", ... */
 export function NavLink({ active = false, className, children, ...props }: NavLinkProps) {
   return (
-    <span className="relative inline-block">
+    <span className="relative inline-flex items-center self-stretch">
       {active && <NavActiveDrip />}
       <a
         aria-current={active ? "page" : undefined}
