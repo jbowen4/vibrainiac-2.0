@@ -30,6 +30,8 @@ export function NavDropdown({
   items,
   active = false,
 }: NavDropdownProps) {
+  const activeItem = items.find((item) => item.active);
+
   return (
     <div className='relative flex items-center self-stretch'>
       {active && <NavActiveDrip />}
@@ -81,6 +83,15 @@ export function NavDropdown({
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
+      {active && activeItem && (
+        <span
+          className={cn(
+            'pointer-events-none absolute top-full left-1/2 mt-1.5 -translate-x-1/2',
+            'hidden whitespace-nowrap font-sans text-body-sm font-medium text-text-primary md:block',
+          )}>
+          {activeItem.label}
+        </span>
+      )}
     </div>
   );
 }
