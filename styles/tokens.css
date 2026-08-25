@@ -22,6 +22,8 @@
 
   /* Full-bleed hero backdrop gradient, repeats identically on every page mockup */
   --gradient-hero: linear-gradient(180deg, #02030a 0%, #404c9f 51%, #02030a 100%);
+  /* Home hero gradient — left-to-right variant of --gradient-hero, Figma node 473-302 */
+  --gradient-hero-horizontal: linear-gradient(90deg, #02030a 0%, #404c9f 51%, #02030a 100%);
   /* Bottom fade / vignette overlay, also repeats on every page mockup —
    * transparent at the top edge (blends into whatever's above it),
    * darkening toward the bottom edge of the page. */

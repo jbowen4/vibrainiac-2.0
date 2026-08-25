@@ -4,12 +4,14 @@ import { Button } from '@/components/Button';
 import { Container } from '@/components/Container';
 import { Footer } from '@/components/Footer';
 import { GradientBackdrop } from '@/components/GradientBackdrop';
+import { Heading } from '@/components/Heading';
 import { NavDropdown, Navbar } from '@/components/Navbar';
 import { NavLink } from '@/components/NavLink';
 import { SocialIcon, type SocialPlatform } from '@/components/SocialIcon';
 import { Text } from '@/components/Text';
-import heroBackground from '../../public/home/hero-background.png';
-import heroWordmark from '../../public/home/hero-wordmark.png';
+import newWordmark from '../../public/new-wordmark.png';
+import topographicBrain from '../../public/Topographic_Brain.png';
+import vibrainiacLogoC from '../../public/VibrainiacLogo_C.png';
 
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
@@ -50,7 +52,9 @@ export default function Home() {
   return (
     <>
       <GradientBackdrop
-        backgroundImage={heroBackground}
+        backgroundImage={topographicBrain}
+        backgroundImageClassName='opacity-[0.05]'
+        gradient='horizontal'
         className='min-h-screen'>
         <div className='flex min-h-screen flex-col'>
           <Container>
@@ -78,12 +82,17 @@ export default function Home() {
             />
           </Container>
 
-          <div className='flex flex-1 items-center justify-center px-6 py-12'>
+          <div className='flex flex-1 flex-col items-center justify-center gap-6 px-6 py-12 sm:gap-8'>
             <Image
-              src={heroWordmark}
-              alt='Vibrainiac Games'
+              src={vibrainiacLogoC}
+              alt='Vibrainiac'
               priority
-              className='h-auto w-full max-w-sm sm:max-w-xl'
+              className='h-auto w-full max-w-55 sm:max-w-xs md:max-w-sm'
+            />
+            <Image
+              src={newWordmark}
+              alt='Vibrainiac'
+              className='h-auto w-full max-w-60 sm:max-w-sm md:max-w-md'
             />
           </div>
         </div>
@@ -91,7 +100,10 @@ export default function Home() {
 
       <section className='bg-background-primary py-20 sm:py-24'>
         <Container className='mx-auto flex max-w-3xl flex-col items-center gap-8 text-center'>
-          <Text size='xl' weight='regular'>
+          <Heading size='lg' className='!text-accent-secondary'>
+            Who We Are
+          </Heading>
+          <Text size='lg' weight='regular'>
             Vibrainiac is an independent game development studio founded by a
             team with over 20 years of collective AAA experience. Primarily from
             Electronic Arts (EA), this team has worked on games like Madden NFL,
@@ -100,11 +112,15 @@ export default function Home() {
             the expertise, creativity, and technical excellence of AAA
             development to the agility and passion of an indie studio.
           </Text>
-          <Text size='xl' weight='regular'>
+          <Text size='lg' weight='regular'>
             We are dedicated to creating games that not only entertain, but also
             inspire and make a positive impact for everyone. We aim to create
             games that encourage empathy, connection, and meaningful experiences
-            for players everywhere. Our mission is to prove that games can be
+            for players everywhere.{' '}
+            <span className='font-bold text-accent-secondary'>
+              Our mission
+            </span>{' '}
+            is to prove that games can be
             both deeply engaging and socially uplifting, blending innovation,
             artistry, and purpose in every project we create.
           </Text>

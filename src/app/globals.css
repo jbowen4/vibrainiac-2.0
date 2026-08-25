@@ -35,6 +35,7 @@
   /* Gradients (exposed as background-image utilities via bg-[image:...] is
      verbose, so these are also available as plain vars for arbitrary use) */
   --gradient-hero: var(--gradient-hero);
+  --gradient-hero-horizontal: var(--gradient-hero-horizontal);
   --gradient-fade: var(--gradient-fade);
   --gradient-image-placeholder: var(--gradient-image-placeholder);
   --gradient-blob-magenta: var(--gradient-blob-magenta);

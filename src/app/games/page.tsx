@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { GradientBackdrop } from "@/components/GradientBackdrop";
 import { Heading } from "@/components/Heading";
+import { LegalNav } from "@/components/LegalNav";
 import { NavDropdown, Navbar } from "@/components/Navbar";
 import { NavLink } from "@/components/NavLink";
 import { SocialIcon, type SocialPlatform } from "@/components/SocialIcon";
@@ -27,6 +28,12 @@ const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
   { platform: "instagram", href: "#" },
   { platform: "youtube", href: "#" },
   { platform: "linkedin", href: "#" },
+];
+
+const LEGAL_NAV_LINKS = [
+  { label: "Terms of Service", href: "/terms-of-service" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "App Disclaimer", href: "/app-disclaimer" },
 ];
 
 export default function GamesPage() {
@@ -72,7 +79,7 @@ export default function GamesPage() {
         </Container>
 
         <div className="flex flex-1 flex-col md:min-h-0 md:overflow-hidden">
-          <Container className="flex w-full flex-1 flex-col justify-center py-8 md:min-h-0 md:py-5">
+          <Container className="flex w-full flex-1 flex-col justify-center py-6 md:min-h-0 md:py-4">
             <div className="grid flex-1 grid-cols-1 items-center gap-10 md:min-h-0 md:grid-cols-2 md:gap-8 lg:gap-14">
               <div className="order-2 flex flex-col items-start gap-6 rounded-lg bg-white/5 p-6 sm:p-8 md:order-1">
                 <span
@@ -136,7 +143,7 @@ export default function GamesPage() {
                 </div>
               </div>
 
-              <div className="relative order-1 flex h-[42vh] w-full items-center justify-center sm:h-[50vh] md:order-2 md:h-[48vh] lg:h-[56vh]">
+              <div className="relative order-1 flex h-[42vh] w-full items-center justify-center sm:h-[50vh] md:order-2 md:h-[42vh] lg:h-[50vh]">
                 <div className="relative h-full w-full">
                   <Image
                     src={innerverseOwl}
@@ -160,6 +167,10 @@ export default function GamesPage() {
               </div>
             </div>
           </Container>
+
+          <div className="flex shrink-0 justify-center pb-6 md:pb-4">
+            <LegalNav links={LEGAL_NAV_LINKS} />
+          </div>
         </div>
       </div>
     </GradientBackdrop>

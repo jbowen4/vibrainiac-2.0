@@ -36,12 +36,14 @@ export function DecorativeBlob({ variant, className }: DecorativeBlobProps) {
 }
 
 export interface GradientBackdropProps {
-  /** Renders the recurring dark-to-blue-to-dark hero gradient (present on every sampled page). */
-  gradient?: boolean;
+  /** Renders the recurring dark-to-blue-to-dark hero gradient. `true` is the default top-to-bottom orientation; `'horizontal'` uses the left-to-right variant (Home hero, Figma node 473-302). */
+  gradient?: boolean | 'horizontal';
   /** Adds the bottom fade-to-black overlay used to ground content at the base of a section. */
   fade?: boolean;
   /** Full-bleed decorative texture layered over the gradient — give the root a defined height via `className` for it to fill. */
   backgroundImage?: StaticImageData | string;
+  /** Extra classes merged onto the background image, e.g. to dial down its opacity. */
+  backgroundImageClassName?: string;
   className?: string;
   children?: ReactNode;
 }
@@ -56,6 +58,7 @@ export function GradientBackdrop({
   gradient = true,
   fade = false,
   backgroundImage,
+  backgroundImageClassName,
   className,
   children,
 }: GradientBackdropProps) {
@@ -68,7 +71,12 @@ export function GradientBackdrop({
       {gradient && (
         <div
           aria-hidden
-          className='pointer-events-none absolute inset-0 bg-(image:--gradient-hero)'
+          className={cn(
+            'pointer-events-none absolute inset-0',
+            gradient === 'horizontal'
+              ? 'bg-(image:--gradient-hero-horizontal)'
+              : 'bg-(image:--gradient-hero)',
+          )}
         />
       )}
       {backgroundImage && (
@@ -78,7 +86,10 @@ export function GradientBackdrop({
           fill
           priority
           sizes='100vw'
-          className='pointer-events-none object-cover scale-150'
+          className={cn(
+            'pointer-events-none object-cover scale-150',
+            backgroundImageClassName,
+          )}
         />
       )}
       {fade && (
