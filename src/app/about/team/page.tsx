@@ -11,7 +11,6 @@ import { TEAM_MEMBERS } from "./team-members";
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team", active: true },
   { label: "Our Values", href: "/about/values" },
-  { label: "For Partners", href: "/about/partners" },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
@@ -52,13 +51,13 @@ export default function AboutTeamPage() {
             <Navbar
               start={
                 <>
-                  <NavLink href="/about/news">NEWS</NavLink>
+                  <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
                   <NavLink href="/games">GAMES</NavLink>
                 </>
               }
               end={
                 <>
-                  <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
+                  <NavLink href="/about/partners">PARTNERS</NavLink>
                   <NavLink href="/contact">CONTACT US</NavLink>
                 </>
               }

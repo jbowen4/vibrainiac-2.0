@@ -44,6 +44,8 @@ export interface GradientBackdropProps {
   backgroundImage?: StaticImageData | string;
   /** Extra classes merged onto the background image, e.g. to dial down its opacity. */
   backgroundImageClassName?: string;
+  /** Full-bleed layer stacked above the gradient/background image and below page content, e.g. a solid scrim or vignette rectangle. Sized to match the backdrop itself (including padding), unlike `children`. */
+  overlay?: ReactNode;
   className?: string;
   children?: ReactNode;
 }
@@ -59,6 +61,7 @@ export function GradientBackdrop({
   fade = false,
   backgroundImage,
   backgroundImageClassName,
+  overlay,
   className,
   children,
 }: GradientBackdropProps) {
@@ -92,6 +95,7 @@ export function GradientBackdrop({
           )}
         />
       )}
+      {overlay}
       {fade && (
         <div
           aria-hidden

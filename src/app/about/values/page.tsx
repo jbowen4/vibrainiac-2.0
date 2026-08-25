@@ -17,7 +17,6 @@ const RELEASE_DATE_SHORT = "10/02/2026";
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
   { label: "Our Values", href: "/about/values", active: true },
-  { label: "For Partners", href: "/about/partners" },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
@@ -100,13 +99,13 @@ export default function AboutValuesPage() {
             <Navbar
               start={
                 <>
-                  <NavLink href="/about/news">NEWS</NavLink>
+                  <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
                   <NavLink href="/games">GAMES</NavLink>
                 </>
               }
               end={
                 <>
-                  <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
+                  <NavLink href="/about/partners">PARTNERS</NavLink>
                   <NavLink href="/contact">CONTACT US</NavLink>
                 </>
               }

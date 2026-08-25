@@ -9,7 +9,6 @@ import { SocialIcon } from "./SocialIcon";
 const ABOUT_ITEMS = [
   { label: "The Team", href: "#team" },
   { label: "Our Values", href: "#values" },
-  { label: "For Partners", href: "#partners" },
 ];
 
 const meta = {
@@ -27,13 +26,13 @@ export const Default: Story = {
       <Navbar
         start={
           <>
-            <NavLink href="#">NEWS</NavLink>
+            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
             <NavLink href="#">GAMES</NavLink>
           </>
         }
         end={
           <>
-            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} active />
+            <NavLink href="#">PARTNERS</NavLink>
             <NavLink href="#">CONTACT US</NavLink>
           </>
         }
@@ -59,13 +58,13 @@ export const HomeActive: Story = {
           homeActive
           start={
             <>
-              <NavLink href="#">NEWS</NavLink>
+              <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
               <NavLink href="#">GAMES</NavLink>
             </>
           }
           end={
             <>
-              <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+              <NavLink href="#">PARTNERS</NavLink>
               <NavLink href="#">CONTACT US</NavLink>
             </>
           }
@@ -90,13 +89,13 @@ export const DropdownOpen: Story = {
       <Navbar
         start={
           <>
-            <NavLink href="#">NEWS</NavLink>
+            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
             <NavLink href="#">GAMES</NavLink>
           </>
         }
         end={
           <>
-            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+            <NavLink href="#">PARTNERS</NavLink>
             <NavLink href="#">CONTACT US</NavLink>
           </>
         }
@@ -120,21 +119,21 @@ export const DropdownOpen: Story = {
   },
 };
 
-export const NewsActive: Story = {
+export const PartnersActive: Story = {
   render: () => (
     <GradientBackdrop className="p-6">
       <Navbar
         start={
           <>
-            <NavLink href="#" active>
-              NEWS
-            </NavLink>
+            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
             <NavLink href="#">GAMES</NavLink>
           </>
         }
         end={
           <>
-            <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+            <NavLink href="#" active>
+              PARTNERS
+            </NavLink>
             <NavLink href="#">CONTACT US</NavLink>
           </>
         }

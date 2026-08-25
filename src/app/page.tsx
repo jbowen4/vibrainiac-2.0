@@ -9,6 +9,7 @@ import { NavDropdown, Navbar } from '@/components/Navbar';
 import { NavLink } from '@/components/NavLink';
 import { SocialIcon, type SocialPlatform } from '@/components/SocialIcon';
 import { Text } from '@/components/Text';
+import brainImg from '../../public/brain-img.png';
 import newWordmark from '../../public/new-wordmark.png';
 import topographicBrain from '../../public/Topographic_Brain.png';
 import vibrainiacLogoC from '../../public/VibrainiacLogo_C.png';
@@ -16,7 +17,6 @@ import vibrainiacLogoC from '../../public/VibrainiacLogo_C.png';
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
   { label: 'Our Values', href: '/about/values' },
-  { label: 'For Partners', href: '/about/partners' },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
@@ -62,13 +62,13 @@ export default function Home() {
               homeActive
               start={
                 <>
-                  <NavLink href='/about/news'>NEWS</NavLink>
+                  <NavDropdown label='ABOUT' items={ABOUT_ITEMS} />
                   <NavLink href='/games'>GAMES</NavLink>
                 </>
               }
               end={
                 <>
-                  <NavDropdown label='ABOUT' items={ABOUT_ITEMS} />
+                  <NavLink href='/about/partners'>PARTNERS</NavLink>
                   <NavLink href='/contact'>CONTACT US</NavLink>
                 </>
               }
@@ -87,7 +87,7 @@ export default function Home() {
               src={vibrainiacLogoC}
               alt='Vibrainiac'
               priority
-              className='h-auto w-full max-w-55 sm:max-w-xs md:max-w-sm'
+              className='h-auto w-full max-w-170'
             />
             <Image
               src={newWordmark}
@@ -98,37 +98,47 @@ export default function Home() {
         </div>
       </GradientBackdrop>
 
-      <section className='bg-background-primary py-20 sm:py-24'>
-        <Container className='mx-auto flex max-w-3xl flex-col items-center gap-8 text-center'>
+      <GradientBackdrop
+        backgroundImage={brainImg}
+        gradient={false}
+        overlay={
+          <div
+            aria-hidden
+            className='pointer-events-none absolute inset-0 opacity-90'
+            style={{
+              background: '#020202',
+              boxShadow:
+                '0px 0px 75px #03020D, 0px 0px 100px rgba(3, 2, 13, 0.5)',
+            }}
+          />
+        }
+        className='py-20 sm:py-24'>
+        <Container className='mx-auto flex max-w-5xl flex-col items-center gap-8 text-center'>
           <Heading size='lg' className='!text-accent-secondary'>
             Who We Are
           </Heading>
-          <Text size='lg' weight='regular'>
-            Vibrainiac is an independent game development studio founded by a
-            team with over 20 years of collective AAA experience. Primarily from
-            Electronic Arts (EA), this team has worked on games like Madden NFL,
-            NBA Live, College Football &amp; The Sims, just to name a few. With
-            a background in crafting world-class entertainment, our team brings
-            the expertise, creativity, and technical excellence of AAA
-            development to the agility and passion of an indie studio.
+          <Text size='xl' weight='regular'>
+            Vibrainiac is an independent game studio built by industry veterans,
+            primarily former EA team members, with more than 20 years of
+            combined AAA experience. We combine AAA polish and creative rigor
+            with indie agility to create culturally relevant games that help
+            young adults build emotional skills, explore new ways of responding
+            and discover what they’re capable of—without another lecture.
           </Text>
-          <Text size='lg' weight='regular'>
-            We are dedicated to creating games that not only entertain, but also
-            inspire and make a positive impact for everyone. We aim to create
-            games that encourage empathy, connection, and meaningful experiences
-            for players everywhere.{' '}
-            <span className='font-bold text-accent-secondary'>
-              Our mission
-            </span>{' '}
-            is to prove that games can be
-            both deeply engaging and socially uplifting, blending innovation,
-            artistry, and purpose in every project we create.
+          <Text size='xl' weight='regular'>
+            <span className='font-bold text-accent-secondary'>Our mission</span>{' '}
+            is to prove that games can be both deeply engaging and socially
+            uplifting, blending innovation, artistry, and purpose in every
+            project we create. With a core goal in mind:{' '}
+            <span className='text-accent-secondary'>
+              Improving the life of our players one game at a time.
+            </span>
           </Text>
           <Button variant='solid' href='/about/team'>
             Meet the Team
           </Button>
         </Container>
-      </section>
+      </GradientBackdrop>
 
       <Footer
         links={FOOTER_LINKS}

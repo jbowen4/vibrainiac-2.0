@@ -16,49 +16,85 @@
    * The site uses a single dark theme throughout every mockup (no light
    * mode was present in the Figma file).
    * ------------------------------------------------------------------- */
-  --color-background-primary: #0b0b0b;      /* base page/canvas background */
-  --color-background-secondary: #0a0c11;    /* recurring dark section panel */
-  --color-background-elevated: #0f182f;     /* footer / elevated dark-navy surface */
+  --color-background-primary: #0b0b0b; /* base page/canvas background */
+  --color-background-secondary: #0a0c11; /* recurring dark section panel */
+  --color-background-elevated: #0f182f; /* footer / elevated dark-navy surface */
 
   /* Full-bleed hero backdrop gradient, repeats identically on every page mockup */
-  --gradient-hero: linear-gradient(180deg, #02030a 0%, #404c9f 51%, #02030a 100%);
+  --gradient-hero: linear-gradient(
+    180deg,
+    #02030a 0%,
+    #404c9f 51%,
+    #02030a 100%
+  );
   /* Home hero gradient — left-to-right variant of --gradient-hero, Figma node 473-302 */
-  --gradient-hero-horizontal: linear-gradient(90deg, #02030a 0%, #404c9f 51%, #02030a 100%);
+  --gradient-hero-horizontal: linear-gradient(
+    90deg,
+    #02030a 0%,
+    #404c9f 51%,
+    #02030a 100%
+  );
   /* Bottom fade / vignette overlay, also repeats on every page mockup —
    * transparent at the top edge (blends into whatever's above it),
    * darkening toward the bottom edge of the page. */
-  --gradient-fade: linear-gradient(0deg, rgb(3 2 13 / 75%) 0%, rgb(0 0 0 / 0%) 100%);
+  --gradient-fade: linear-gradient(
+    0deg,
+    rgb(3 2 13 / 75%) 0%,
+    rgb(0 0 0 / 0%) 100%
+  );
   /* Placeholder fill used behind unloaded images (news thumbnails) */
-  --gradient-image-placeholder: linear-gradient(135deg, #d9d9d9 0%, #737373 100%);
+  --gradient-image-placeholder: linear-gradient(
+    135deg,
+    #d9d9d9 0%,
+    #737373 100%
+  );
 
   /* Decorative accent "blobs" — same 3 radial gradients recur on every
    * page mockup, used behind cards/art for visual texture. */
-  --gradient-blob-magenta: radial-gradient(circle, #b13589 0%, #c62f94 79%, #8a3ac8 100%);
-  --gradient-blob-sunset: radial-gradient(circle, #e0e8b7 0%, #fb8a2e 44%, #e2425c 71%, #e2425c 100%);
-  --gradient-blob-violet: radial-gradient(circle, #406adc 16%, #6a45be 47%, #6a45be 100%);
+  --gradient-blob-magenta: radial-gradient(
+    circle,
+    #b13589 0%,
+    #c62f94 79%,
+    #8a3ac8 100%
+  );
+  --gradient-blob-sunset: radial-gradient(
+    circle,
+    #e0e8b7 0%,
+    #fb8a2e 44%,
+    #e2425c 71%,
+    #e2425c 100%
+  );
+  --gradient-blob-violet: radial-gradient(
+    circle,
+    #406adc 16%,
+    #6a45be 47%,
+    #6a45be 100%
+  );
 
   /* ---------------------------------------------------------------------
    * Color — Text
    * ------------------------------------------------------------------- */
-  --color-text-primary: #ffffff;    /* default text on dark surfaces */
-  --color-text-secondary: #b4b4b4;  /* muted copy, e.g. address/meta text */
-  --color-text-muted: #777777;      /* low-emphasis / placeholder text */
-  --color-text-inverse: #1a1a1a;    /* text placed on light surfaces (dropdown panel, badges) */
+  --color-text-primary: #ffffff; /* default text on dark surfaces */
+  --color-text-secondary: #b4b4b4; /* muted copy, e.g. address/meta text */
+  --color-text-muted: #777777; /* low-emphasis / placeholder text */
+  --color-text-inverse: #1a1a1a; /* text placed on light surfaces (dropdown panel, badges) */
 
   /* ---------------------------------------------------------------------
    * Color — Brand & Accent
    * ------------------------------------------------------------------- */
-  --color-accent-primary: #0090ff;   /* brand blue — logo, links, active states, glows */
+  --color-accent-primary: #0090ff; /* brand blue — logo, links, active states, glows */
   --color-accent-secondary: #ffb854; /* warm highlight — callouts, headline emphasis */
-  --color-status-live: #62ff54;      /* "new/live" indicator dot & badges */
+  --color-status-live: #62ff54; /* "new/live" indicator dot & badges */
 
   /* ---------------------------------------------------------------------
    * Color — Borders & Surfaces
    * ------------------------------------------------------------------- */
-  --color-border-subtle: #949494;          /* hairline dividers (footer, section rules) */
-  --color-border-hairline: #d9d9d9;        /* light hairline border on dark cards */
-  --color-surface-glass: rgb(217 217 217 / 25%); /* translucent glass panel fill (nav dropdown) */
-  --color-overlay-scrim: rgb(0 0 0 / 60%);       /* dark scrim over imagery */
+  --color-border-subtle: #949494; /* hairline dividers (footer, section rules) */
+  --color-border-hairline: #d9d9d9; /* light hairline border on dark cards */
+  --color-surface-glass: rgb(
+    217 217 217 / 25%
+  ); /* translucent glass panel fill (nav dropdown) */
+  --color-overlay-scrim: rgb(0 0 0 / 60%); /* dark scrim over imagery */
 
   /* Third-party social brand marks (kept separate from the core palette —
    * these are fixed platform colors, not design-system choices) */
@@ -73,7 +109,8 @@
    * its full 100–900 weight ramp and used consistently for real UI copy
    * across every page mockup — the committed primary typeface.
    * ------------------------------------------------------------------- */
-  --font-family-primary: "Afacad Flux", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-family-primary:
+    'Afacad Flux', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* ---------------------------------------------------------------------
    * Typography — Weights (matches the Afacad Flux variable-font ramp)
@@ -92,15 +129,15 @@
    * Typography — Size scale (consolidated from recurring sizes across
    * hero, section, and body copy in the page mockups)
    * ------------------------------------------------------------------- */
-  --font-size-display: 6rem;       /* 96px — hero headline ("help us build the next level") */
-  --font-size-heading-xl: 3rem;    /* 48px — page/section headline */
+  --font-size-display: 6rem; /* 96px — hero headline ("help us build the next level") */
+  --font-size-heading-xl: 3rem; /* 48px — page/section headline */
   --font-size-heading-lg: 2.25rem; /* 36px — sub-section headline */
   --font-size-heading-md: 1.75rem; /* 28px — card/lead headline */
-  --font-size-heading-sm: 1.5rem;  /* 24px — small section label */
-  --font-size-body-lg: 1.25rem;    /* 20px — intro/lede copy */
-  --font-size-body: 1.125rem;      /* 18px — paragraph copy */
-  --font-size-body-sm: 1rem;       /* 16px — nav links, UI labels */
-  --font-size-caption: 0.875rem;   /* 14px — small labels, pagination */
+  --font-size-heading-sm: 1.5rem; /* 24px — small section label */
+  --font-size-body-lg: 1.25rem; /* 20px — intro/lede copy */
+  --font-size-body: 1.125rem; /* 18px — paragraph copy */
+  --font-size-body-sm: 1rem; /* 16px — nav links, UI labels */
+  --font-size-caption: 0.875rem; /* 14px — small labels, pagination */
 
   /* ---------------------------------------------------------------------
    * Typography — Line height & letter spacing
@@ -115,16 +152,16 @@
   /* ---------------------------------------------------------------------
    * Spacing scale
    * ------------------------------------------------------------------- */
-  --spacing-1: 0.25rem;  /* 4px */
-  --spacing-2: 0.5rem;   /* 8px */
-  --spacing-3: 0.75rem;  /* 12px */
-  --spacing-4: 1rem;     /* 16px */
-  --spacing-5: 1.5rem;   /* 24px */
-  --spacing-6: 2rem;     /* 32px */
-  --spacing-7: 2.5rem;   /* 40px — matches nav pill horizontal padding */
-  --spacing-8: 4rem;     /* 64px */
-  --spacing-9: 6rem;     /* 96px */
-  --spacing-10: 8rem;    /* 128px */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.5rem; /* 24px */
+  --spacing-6: 2rem; /* 32px */
+  --spacing-7: 2.5rem; /* 40px — matches nav pill horizontal padding */
+  --spacing-8: 4rem; /* 64px */
+  --spacing-9: 6rem; /* 96px */
+  --spacing-10: 8rem; /* 128px */
 
   /* Semantic aliases used for page rhythm */
   --spacing-section-sm: var(--spacing-8);
@@ -140,10 +177,10 @@
   /* ---------------------------------------------------------------------
    * Border radius
    * ------------------------------------------------------------------- */
-  --radius-sm: 0.375rem;  /* 6px — chips, small buttons, glass panels */
-  --radius-md: 1rem;      /* 16px — image/card thumbnails */
-  --radius-lg: 2.125rem;  /* 34px — pill-shaped nav/logo capsule */
-  --radius-full: 9999px;  /* circular avatars */
+  --radius-sm: 0.375rem; /* 6px — chips, small buttons, glass panels */
+  --radius-md: 1rem; /* 16px — image/card thumbnails */
+  --radius-lg: 2.125rem; /* 34px — pill-shaped nav/logo capsule */
+  --radius-full: 9999px; /* circular avatars */
 
   /* ---------------------------------------------------------------------
    * Borders
@@ -168,8 +205,8 @@
   /* ---------------------------------------------------------------------
    * Opacity
    * ------------------------------------------------------------------- */
-  --opacity-image-dim: 0.15;  /* dimmed hero/background imagery under gradients */
-  --opacity-decorative: 0.3;  /* soft decorative glow rings */
+  --opacity-image-dim: 0.15; /* dimmed hero/background imagery under gradients */
+  --opacity-decorative: 0.3; /* soft decorative glow rings */
 
   /* ---------------------------------------------------------------------
    * Motion

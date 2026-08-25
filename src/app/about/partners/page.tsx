@@ -12,7 +12,6 @@ import heroBackground from '../../../../public/home/hero-background.png';
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
   { label: 'Our Values', href: '/about/values' },
-  { label: 'For Partners', href: '/about/partners', active: true },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
@@ -56,13 +55,15 @@ export default function AboutPartnersPage() {
             <Navbar
               start={
                 <>
-                  <NavLink href='/about/news'>NEWS</NavLink>
+                  <NavDropdown label='ABOUT' items={ABOUT_ITEMS} />
                   <NavLink href='/games'>GAMES</NavLink>
                 </>
               }
               end={
                 <>
-                  <NavDropdown label='ABOUT' items={ABOUT_ITEMS} active />
+                  <NavLink href='/about/partners' active>
+                    PARTNERS
+                  </NavLink>
                   <NavLink href='/contact'>CONTACT US</NavLink>
                 </>
               }
@@ -80,8 +81,9 @@ export default function AboutPartnersPage() {
             <Container className='grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start md:gap-16'>
               <div className='flex flex-col items-start gap-8'>
                 <Heading size='display'>
-                  Help us build the{' '}
-                  <span className='text-accent-secondary'>next level</span>
+                  For <br />
+                  Funders & <br />
+                  <span className='text-accent-secondary'>Founders</span>
                 </Heading>
                 <Button variant='solid' href='/contact'>
                   Contact for Partnerships
@@ -89,28 +91,22 @@ export default function AboutPartnersPage() {
               </div>
 
               <div className='flex flex-col gap-6'>
-                <Text size='lg'>
-                  Vibrainiac is currently developing and building its first
-                  title.
+                <Text size='xl'>
+                  <span className='font-bold'>Vibrainiac™</span> is currently
+                  developing and testing our inaugural game experience.
                 </Text>
-                <Text size='lg'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
+                <Text size='xl'>
+                  We’re interested in connecting with funders, researchers and
+                  strategic partners working across play-based learning,
+                  culturally responsive technology, youth development and
+                  emotional skill-building. Support for the next phase will help
+                  us strengthen the product, conduct meaningful user testing and
+                  build evidence around engagement, confidence and real-world
+                  application.
                 </Text>
-                <Text size='lg'>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                  consequuntur magni dolores eos qui ratione voluptatem sequi
-                  nesciunt.
+                <Text size='xl'>
+                  Join the list and select Funder or Potential Partner to
+                  receive relevant project updates and opportunities to connect.
                 </Text>
               </div>
             </Container>

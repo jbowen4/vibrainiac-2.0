@@ -15,7 +15,6 @@ import { ContactForm } from './ContactForm';
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
   { label: 'Our Values', href: '/about/values' },
-  { label: 'For Partners', href: '/about/partners' },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
@@ -59,13 +58,13 @@ export default function ContactPage() {
             <Navbar
               start={
                 <>
-                  <NavLink href='/about/news'>NEWS</NavLink>
+                  <NavDropdown label='ABOUT' items={ABOUT_ITEMS} />
                   <NavLink href='/games'>GAMES</NavLink>
                 </>
               }
               end={
                 <>
-                  <NavDropdown label='ABOUT' items={ABOUT_ITEMS} />
+                  <NavLink href='/about/partners'>PARTNERS</NavLink>
                   <NavLink href='/contact' active>
                     CONTACT US
                   </NavLink>

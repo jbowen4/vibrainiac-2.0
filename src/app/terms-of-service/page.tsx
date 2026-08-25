@@ -11,7 +11,6 @@ import { Text } from "@/components/Text";
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
   { label: "Our Values", href: "/about/values" },
-  { label: "For Partners", href: "/about/partners" },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
@@ -41,7 +40,7 @@ export default function TermsOfServicePage() {
           <Navbar
             start={
               <>
-                <NavLink href="/about/news">NEWS</NavLink>
+                <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
                 <NavLink href="/games" active>
                   GAMES
                 </NavLink>
@@ -49,7 +48,7 @@ export default function TermsOfServicePage() {
             }
             end={
               <>
-                <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+                <NavLink href="/about/partners">PARTNERS</NavLink>
                 <NavLink href="/contact">CONTACT US</NavLink>
               </>
             }

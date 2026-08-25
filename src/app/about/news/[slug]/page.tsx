@@ -13,7 +13,6 @@ import { NEWS_ARTICLES, getNewsArticle } from "../news-data";
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
   { label: "Our Values", href: "/about/values" },
-  { label: "For Partners", href: "/about/partners" },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
@@ -86,15 +85,13 @@ export default async function NewsArticlePage({
             <Navbar
               start={
                 <>
-                  <NavLink href="/about/news" active>
-                    NEWS
-                  </NavLink>
+                  <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
                   <NavLink href="/games">GAMES</NavLink>
                 </>
               }
               end={
                 <>
-                  <NavDropdown label="ABOUT" items={ABOUT_ITEMS} />
+                  <NavLink href="/about/partners">PARTNERS</NavLink>
                   <NavLink href="/contact">CONTACT US</NavLink>
                 </>
               }

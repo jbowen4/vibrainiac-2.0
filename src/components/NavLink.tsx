@@ -38,11 +38,13 @@ export function NavLink({
   ...props
 }: NavLinkProps) {
   const mobile = useContext(MobileNavContext);
+  const wide = typeof children === 'string' && children.trim().split(/\s+/).length > 1;
 
   return (
     <span
       className={cn('relative inline-flex items-center', !mobile && 'self-stretch')}>
-      {active && (mobile ? <MobileNavActiveBar /> : <NavActiveDrip />)}
+      {active &&
+        (mobile ? <MobileNavActiveBar /> : <NavActiveDrip wide={wide} />)}
       <a
         aria-current={active ? 'page' : undefined}
         className={cn(
