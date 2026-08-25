@@ -147,7 +147,7 @@ export function Navbar({
       <div aria-hidden />
 
       <div className='flex flex-wrap items-center justify-center gap-x-3 gap-y-2 whitespace-nowrap md:grid md:grid-cols-[1fr_auto_1fr] md:flex-nowrap md:gap-x-16'>
-        <div className='hidden md:flex md:items-center md:justify-end md:gap-16'>
+        <div className='hidden md:flex md:items-center md:justify-end md:gap-16 md:self-stretch'>
           {start}
         </div>
         <div className='relative flex items-center self-stretch'>
@@ -173,7 +173,7 @@ export function Navbar({
             )}
           </Link>
         </div>
-        <div className='hidden md:flex md:items-center md:justify-start md:gap-16'>
+        <div className='hidden md:flex md:items-center md:justify-start md:gap-16 md:self-stretch'>
           {end}
         </div>
       </div>
