@@ -1,6 +1,5 @@
 import Image from 'next/image';
 
-import { Accordion, type AccordionItem } from '@/components/Accordion';
 import { Container } from '@/components/Container';
 import { Footer } from '@/components/Footer';
 import { GradientBackdrop } from '@/components/GradientBackdrop';
@@ -8,8 +7,10 @@ import { Heading } from '@/components/Heading';
 import { NavDropdown, Navbar } from '@/components/Navbar';
 import { NavLink } from '@/components/NavLink';
 import { SocialIcon, type SocialPlatform } from '@/components/SocialIcon';
+import { Text } from '@/components/Text';
 import contactUsText from '../../../public/contact/contact-us-text.png';
 import heroBackground from '../../../public/home/hero-background.png';
+import { ContactForm } from './ContactForm';
 
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
@@ -44,29 +45,6 @@ const FOOTER_LINKS = [
   { label: 'Media Center', href: '/media-center' },
   { label: 'Our Domains', href: '/domains' },
   { label: 'Site Map', href: '/site-map' },
-];
-
-const CONTACT_ITEMS: AccordionItem[] = [
-  {
-    id: 'game-support',
-    label: 'Game Support',
-    content: 'Please contact us at support@vibrainiacgames.com',
-  },
-  {
-    id: 'recruitment',
-    label: 'Recruitment',
-    content: 'Please contact us at recruitment@vibrainiacgames.com',
-  },
-  {
-    id: 'partnerships',
-    label: 'Partnerships',
-    content: 'Please contact us at partnerships@vibrainiacgames.com',
-  },
-  {
-    id: 'general-inquiries',
-    label: 'General Inquiries',
-    content: 'Please contact us at hello@vibrainiacgames.com',
-  },
 ];
 
 export default function ContactPage() {
@@ -114,7 +92,19 @@ export default function ContactPage() {
                     className='h-auto w-full max-w-sm sm:max-w-xl'
                   />
                 </Heading>
-                <Accordion items={CONTACT_ITEMS} />
+
+                <div className='flex flex-col items-center gap-4 text-center'>
+                  <Heading size='lg' className='text-accent-secondary'>
+                    The summit is only the beginning.
+                  </Heading>
+                  <Text size='lg' className='max-w-2xl'>
+                    Be among the first to see what we&rsquo;re building,
+                    follow the development journey and hear when playtesting
+                    begins.
+                  </Text>
+                </div>
+
+                <ContactForm />
               </div>
             </Container>
           </div>
