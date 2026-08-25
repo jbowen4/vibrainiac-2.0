@@ -146,8 +146,10 @@ export function Navbar({
 
       <div aria-hidden />
 
-      <div className='flex flex-wrap items-center justify-center gap-x-3 gap-y-2 whitespace-nowrap md:flex-nowrap md:gap-16'>
-        <div className='hidden md:contents'>{start}</div>
+      <div className='flex flex-wrap items-center justify-center gap-x-3 gap-y-2 whitespace-nowrap md:grid md:grid-cols-[1fr_auto_1fr] md:flex-nowrap md:gap-x-16'>
+        <div className='hidden md:flex md:items-center md:justify-end md:gap-16'>
+          {start}
+        </div>
         <div className='relative flex items-center self-stretch'>
           {homeActive && (
             <span className='hidden md:contents'>
@@ -171,11 +173,13 @@ export function Navbar({
             )}
           </Link>
         </div>
-        <div className='hidden md:contents'>{end}</div>
+        <div className='hidden md:flex md:items-center md:justify-start md:gap-16'>
+          {end}
+        </div>
       </div>
 
       <div className='flex items-center gap-4 justify-self-end'>
-        <div className='hidden items-center gap-5 md:flex'>{social}</div>
+        {/* <div className='hidden items-center gap-5 md:flex'>{social}</div> */}
         <button
           type='button'
           aria-expanded={mobileOpen}

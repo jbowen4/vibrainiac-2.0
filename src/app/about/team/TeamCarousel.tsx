@@ -171,9 +171,13 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
             <h2 className="font-sans text-heading-md text-accent-secondary font-bold uppercase leading-tight sm:text-heading-xl">
               {active.name} | {active.title}
             </h2>
-            <Text size="lg" weight="light">
-              {active.description}
-            </Text>
+            <div className="flex flex-col gap-4">
+              {active.description.map((paragraph, i) => (
+                <Text key={i} size="lg" weight="light">
+                  {paragraph}
+                </Text>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -194,9 +198,13 @@ export function TeamCarousel({ members }: TeamCarouselProps) {
               <h2 className="font-sans text-heading-sm font-bold text-accent-secondary uppercase leading-tight">
                 {member.name} | {member.title}
               </h2>
-              <Text size="base" weight="light">
-                {member.description}
-              </Text>
+              <div className="flex flex-col gap-3">
+                {member.description.map((paragraph, i) => (
+                  <Text key={i} size="base" weight="light">
+                    {paragraph}
+                  </Text>
+                ))}
+              </div>
             </div>
           </li>
         ))}
