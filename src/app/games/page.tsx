@@ -234,7 +234,7 @@ export default function GamesPage() {
             </Container>
 
             <div className='mx-auto flex w-full shrink-0 justify-center pb-6 md:pb-4 lg:max-w-225'>
-              <LegalNav links={LEGAL_NAV_LINKS} className='lg:w-full' />
+              <LegalNav links={LEGAL_NAV_LINKS} className='w-full' />
             </div>
           </div>
         </div>

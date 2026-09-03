@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 import { cn } from "@/lib/cn";
 
 export interface LegalNavLink {
@@ -22,7 +24,7 @@ export function LegalNav({ links, activeHref, className }: LegalNavProps) {
     <nav
       aria-label="Legal"
       className={cn(
-        "inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-2 rounded-full",
+        "flex flex-wrap items-center justify-between gap-x-3 gap-y-2 rounded-full",
         "border border-accent-primary/20 bg-background-elevated/40 px-6 py-3 sm:px-10",
         "shadow-elevated backdrop-blur-glass-md",
         className
@@ -31,7 +33,7 @@ export function LegalNav({ links, activeHref, className }: LegalNavProps) {
       {links.map((link, index) => {
         const active = link.href === activeHref;
         return (
-          <span key={link.href} className="flex items-center gap-x-3">
+          <Fragment key={link.href}>
             {index > 0 && (
               <span aria-hidden className="text-accent-primary">
                 &bull;
@@ -41,16 +43,17 @@ export function LegalNav({ links, activeHref, className }: LegalNavProps) {
               href={link.href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "font-sans text-body-sm font-bold tracking-wide uppercase",
+                "flex items-center text-center text-[24px] leading-[33px] font-bold uppercase",
                 "transition-colors duration-(--transition-fast) ease-standard",
                 active
                   ? "text-text-primary drop-shadow-(--shadow-glow-accent)"
                   : "text-accent-primary hover:text-accent-secondary"
               )}
+              style={{ fontFamily: "var(--font-truculenta)" }}
             >
               {link.label}
             </a>
-          </span>
+          </Fragment>
         );
       })}
     </nav>
