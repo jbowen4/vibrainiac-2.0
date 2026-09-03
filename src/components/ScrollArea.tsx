@@ -50,18 +50,18 @@ export function ScrollArea({ children, className }: ScrollAreaProps) {
   }, [update]);
 
   return (
-    <div className='flex min-h-0 flex-1 items-stretch gap-4'>
+    <div className='flex flex-1 items-stretch gap-4 md:min-h-0'>
       <div
         ref={scrollRef}
         onScroll={update}
         className={cn(
-          'min-h-0 flex-1 overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          'flex-1 md:min-h-0 md:overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           className,
         )}>
         {children}
       </div>
       {thumb && (
-        <div className='relative w-2 shrink-0 rounded-full border border-white/70 bg-black/70'>
+        <div className='relative hidden w-2 shrink-0 rounded-full border border-white/70 bg-black/70 md:block'>
           <div
             className='absolute inset-x-0 rounded-full bg-white'
             style={{ height: thumb.height, top: thumb.top }}

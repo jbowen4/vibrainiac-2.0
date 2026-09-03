@@ -13,7 +13,7 @@ import { SocialIcon, type SocialPlatform } from '@/components/SocialIcon';
 import { Text } from '@/components/Text';
 import innerverseBackground from '../../../public/games/innerverse-background.png';
 import innerverseLogo from '../../../public/games/innerverse-logo.png';
-import innerverseOwl from '../../../public/games/innerverse-owl.png';
+import innerverseOwl from '../../../public/games/innerverse-owl-logo.png';
 
 const RELEASE_DATE = 'October 2, 2026';
 const RELEASE_DATE_SHORT = '10/02/26';
@@ -63,7 +63,7 @@ export default function GamesPage() {
     <>
       <GradientBackdrop
         gradient={false}
-        className='h-dvh min-h-dvh overflow-hidden'>
+        className='min-h-dvh md:h-dvh md:overflow-hidden'>
         <Image
           src={innerverseBackground}
           alt=''
@@ -77,7 +77,7 @@ export default function GamesPage() {
           className='pointer-events-none absolute inset-0 bg-(image:--gradient-fade)'
         />
 
-        <div className='relative flex h-dvh min-h-dvh flex-col overflow-y-auto md:overflow-hidden'>
+        <div className='relative flex min-h-dvh flex-col md:h-dvh md:overflow-hidden'>
           <Container className='shrink-0'>
             <Navbar
               start={
@@ -108,23 +108,23 @@ export default function GamesPage() {
             <Container className='flex w-full flex-1 flex-col justify-center py-6 md:min-h-0 md:py-4'>
               <div className='grid flex-1 grid-cols-1 items-center gap-10 md:min-h-0 md:grid-cols-2 md:gap-8 lg:gap-14'>
                 <div
-                  className='relative order-2 flex max-h-[42vh] w-full flex-col overflow-hidden rounded-lg border-l-2 border-accent-primary sm:max-h-[50vh] md:order-1 md:max-h-[42vh] lg:max-h-[50vh]'
+                  className='relative order-2 flex w-full flex-col rounded-lg border-l-2 border-accent-primary md:order-1 md:max-h-[70vh] md:overflow-hidden lg:max-h-[70vh]'
                   style={{
                     background:
                       'linear-gradient(270deg, rgba(1, 4, 15, 0) 0%, #01040F 100%)',
                     backdropFilter: 'blur(4.55px)',
                   }}>
                   <span
-                    className='absolute top-4 right-4 z-10 inline-flex items-center py-2 pr-5 pl-4 text-caption font-bold text-text-inverse shadow-elevated'
+                    className='absolute top-1 right-4 z-10 flex h-[25px] w-[127px] items-center justify-center px-2 text-center text-[11px] leading-none font-bold text-text-inverse shadow-elevated'
                     style={{
-                      clipPath:
-                        'polygon(0% 0%, 100% 0%, 100% 100%, 12% 100%, 0% 62%)',
-                      backgroundColor: 'var(--color-accent-secondary)',
+                      backgroundImage: 'url(/coming-soon-box.svg)',
+                      backgroundSize: '100% 100%',
+                      backgroundRepeat: 'no-repeat',
                     }}>
                     Coming Soon!
                   </span>
 
-                  <div className='flex min-h-0 flex-1 flex-col items-start gap-4 p-6 pt-16 sm:p-8 sm:pt-20'>
+                  <div className='flex flex-1 flex-col items-start gap-4 p-6 pt-16 sm:p-8 sm:pt-20 md:min-h-0'>
                     <Heading size='xl'>Innerverse</Heading>
 
                     <ScrollArea className='pr-1'>
@@ -175,10 +175,7 @@ export default function GamesPage() {
                     </ScrollArea>
 
                     <Text size='base' weight='regular'>
-                      Coming soon on{' '}
-                      <span className='font-semibold text-accent-primary'>
-                        {RELEASE_DATE}
-                      </span>
+                      Coming soon to
                     </Text>
 
                     <div className='flex flex-wrap items-center gap-4'>
@@ -204,7 +201,7 @@ export default function GamesPage() {
                   </div>
                 </div>
 
-                <div className='relative order-1 flex h-[42vh] w-full items-center justify-center sm:h-[50vh] md:order-2 md:h-[42vh] lg:h-[50vh]'>
+                <div className='relative order-1 flex h-[42vh] w-full items-center justify-center sm:h-[50vh] md:order-2 md:h-[70vh] lg:h-[70vh]'>
                   <div className='relative h-full w-full'>
                     <Image
                       src={innerverseOwl}
@@ -214,17 +211,21 @@ export default function GamesPage() {
                       sizes='(min-width: 768px) 40vw, 90vw'
                       className='object-contain object-center drop-shadow-(--shadow-elevated)'
                     />
-                    <div className='absolute inset-x-0 bottom-[6%] flex flex-col items-center px-4'>
+                    <div className='absolute inset-x-0 bottom-[2%] flex flex-col items-center px-4 md:bottom-[6%] md:translate-x-[8%]'>
                       <Image
                         src={innerverseLogo}
                         alt='Innerverse'
-                        className='w-full max-w-lg'
+                        className='w-[80%] max-w-[240px] md:w-[130%] md:max-w-4xl'
                       />
-                      <span className='mt-1 font-sans text-heading-sm font-bold text-accent-primary drop-shadow-(--shadow-glow-accent)'>
-                        EARLY ACCESS
-                      </span>
-                      <span className='mt-1 font-sans text-heading-sm font-bold text-accent-primary drop-shadow-(--shadow-glow-accent)'>
-                        COMING SOON
+                      <span
+                        className='mt-1 text-center text-[26px] leading-[1.15] font-bold text-white uppercase md:text-[64px] md:leading-[89px]'
+                        style={{
+                          fontFamily: 'var(--font-truculenta)',
+                          WebkitTextStroke: '0.252558px #FFFFFF',
+                          textShadow:
+                            '0px 0px 14.7326px #FCC26B, 0px 0px 4.71442px #FCC26B',
+                        }}>
+                        Early Access
                       </span>
                     </div>
                   </div>
@@ -232,8 +233,8 @@ export default function GamesPage() {
               </div>
             </Container>
 
-            <div className='flex shrink-0 justify-center pb-6 md:pb-4'>
-              <LegalNav links={LEGAL_NAV_LINKS} />
+            <div className='mx-auto flex w-full shrink-0 justify-center pb-6 md:pb-4 lg:max-w-225'>
+              <LegalNav links={LEGAL_NAV_LINKS} className='lg:w-full' />
             </div>
           </div>
         </div>
@@ -242,7 +243,9 @@ export default function GamesPage() {
       <Footer
         links={FOOTER_LINKS}
         socialLinks={FOOTER_SOCIAL_LINKS}
-        address={'225 N. French Avenue, Suite C\nSanford, FL 32771\nUnited States'}
+        address={
+          '225 N. French Avenue, Suite C\nSanford, FL 32771\nUnited States'
+        }
       />
     </>
   );
