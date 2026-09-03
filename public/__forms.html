@@ -1,0 +1,22 @@
+<!--
+  Static form registration for Netlify Forms.
+
+  @netlify/plugin-nextjs v5 can no longer crawl prerendered Next.js pages
+  to auto-detect Netlify Forms, since routes can be revalidated at runtime
+  instead of being fully static HTML. This file exists solely so Netlify's
+  build-time form detection can find the "contact" form definition; it is
+  never served to users. The real form (src/app/contact/ContactForm.tsx)
+  submits to this file's path instead of data-netlify attributes.
+  See https://opennext.js.org/netlify/forms
+-->
+<html>
+  <head></head>
+  <body>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="email" type="email" />
+      <input name="role" type="text" />
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>

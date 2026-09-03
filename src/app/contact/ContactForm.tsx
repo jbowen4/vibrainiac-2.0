@@ -23,10 +23,11 @@ type SubmitStatus = "idle" | "submitting" | "success" | "error";
 /**
  * "Join the Quest" signup — the Contact Us page mockup's email capture,
  * role picker, and CTA (Figma node 406:1128). Submits to Netlify Forms
- * (https://docs.netlify.com/forms/setup/#submit-html-forms-with-javascript-fetch);
- * the static markup below (name/data-netlify attributes, hidden
- * form-name field) is what Netlify's build-time crawler needs to
- * register the form.
+ * (https://docs.netlify.com/forms/setup/#submit-html-forms-with-javascript-fetch).
+ * Netlify's build-time form detection can't crawl this dynamically
+ * rendered page, so the form is registered via public/__forms.html
+ * instead (see https://opennext.js.org/netlify/forms), and submissions
+ * POST there rather than to this route.
  */
 export function ContactForm() {
   const [email, setEmail] = useState("");
@@ -38,7 +39,7 @@ export function ContactForm() {
     setStatus("submitting");
 
     try {
-      const response = await fetch("/contact", {
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encodeFormData({ "form-name": FORM_NAME, email, role }),
@@ -65,8 +66,6 @@ export function ContactForm() {
   return (
     <form
       name={FORM_NAME}
-      data-netlify="true"
-      netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className="flex w-full flex-col items-center gap-6"
     >
