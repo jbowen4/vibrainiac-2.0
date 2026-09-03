@@ -109,7 +109,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     avatar: teamAvatar('/team-headshots/Rebecca_Headshot.png', 'RA', 'magenta'),
   },
   {
-    name: 'Wayne',
+    name: 'Wayne Solomon',
     title: 'Lead Backend Developer',
     description: [
       'Wayne is the Lead Backend Developer at Vibrainiac, bringing over six years of professional experience across software engineering, artificial intelligence, data science, medical devices, and surgical robotics. His career has been shaped by solving technically demanding problems where reliability matters, and he now applies that experience to building the backend systems that help bring Vibrainiac’s games to life.',
@@ -118,8 +118,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     avatar: teamAvatar(null, 'W', 'violet'),
   },
   {
-    name: 'Rob',
-    title: 'Creative Director',
+    name: 'Rob Diaz',
+    title: 'Chief Creative Officer',
     description: [
       'I’ve been a part of the gaming industry since 2009, starting out in QA before sneaking into UI/UX where no one asked any questions, and eventually finding my way into creative leadership. Over the past 15+ years, I’ve had the pleasure to work on exciting games across PC, console, and mobile, including SMITE 2, Madden NFL, and NBA LIVE.',
       'Having been a UX/UI designer, Art Lead and often serving as a feature and systems designer during my time at EA SPORTS and Hi-Rez Ventures, I’m now leading the creative direction to building fun and engaging experiences with the team at Vibrainiac Games.',

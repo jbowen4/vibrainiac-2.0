@@ -119,9 +119,9 @@ export default function GamesPage() {
                     <ScrollArea className='pr-1'>
                       <div className='flex flex-col gap-4 pb-1'>
                         <Text size='lg' tone='secondary'>
-                          Innerverse is our first experience in development: a
-                          mobile game designed to make emotional growth feel
-                          more active, approachable and human.
+                          Innerverse is our inaugural product—a mobile game
+                          designed to make emotional growth feel more active,
+                          approachable, and human.
                         </Text>
                         <Text size='lg' tone='secondary'>
                           Through interactive mini-games, guided challenges and
@@ -156,9 +156,36 @@ export default function GamesPage() {
                           See the skills, strategies and confidence you are
                           building as you continue playing.
                         </Text>
+                        <Text size='lg' weight='bold'>
+                          Be part of building it with us
+                        </Text>
                         <Text size='lg'>
-                          Innerverse is currently at MVP stage, which means the
-                          world is still being built, tested and improved.
+                          Innerverse is currently in an early stage of
+                          co-development, which means the world is still taking
+                          shape. We’re testing ideas, learning what works,
+                          listening to feedback, and continually improving the
+                          experience.
+                        </Text>
+                        <Text size='lg' weight='bold'>
+                          And we don’t want to build it alone.
+                        </Text>
+                        <Text size='lg'>
+                          We’re inviting our community to play an active role in
+                          shaping App—from trying new experiences and sharing
+                          feedback to helping us discover what makes emotional
+                          growth feel genuinely engaging.
+                        </Text>
+                        <Text size='lg'>
+                          You won’t just be waiting for the finished product.
+                          You’ll have a chance to help create it.
+                        </Text>
+                        <Text size='lg'>
+                          So stay tuned, jump in when you can, and come along
+                          for the journey.
+                        </Text>
+                        <Text size='lg' weight='bold'>
+                          The game is still being built. And there’s a place for
+                          you in the process.
                         </Text>
                       </div>
                     </ScrollArea>
@@ -223,7 +250,11 @@ export default function GamesPage() {
             </Container>
 
             <div className='mx-auto flex w-full shrink-0 justify-center pb-6 md:pb-4 lg:max-w-225'>
-              <LegalNav links={LEGAL_NAV_LINKS} stackOnMobile className='w-full' />
+              <LegalNav
+                links={LEGAL_NAV_LINKS}
+                stackOnMobile
+                className='w-full'
+              />
             </div>
           </div>
         </div>

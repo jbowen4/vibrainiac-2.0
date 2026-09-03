@@ -12,8 +12,6 @@ import forestBackground from "../../../../public/news/forest-background.png";
 import heroBackground from "../../../../public/home/hero-background.png";
 import { ValuesTabs, type ValuesTab } from "./ValuesTabs";
 
-const RELEASE_DATE_SHORT = "10/02/2026";
-
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
   { label: "Our Values", href: "/about/values", active: true },
@@ -41,13 +39,13 @@ const VALUES_TABS: ValuesTab[] = [
   {
     label: "Play With Purpose",
     heading: "Play With Purpose",
-    body: "The story, challenges choices and feedback are connected in what the players is practicing. Game mechanics are not added afterwards to make a lesson look more entertaining.",
+    body: "The story, challenges choices and feedback are connected in what the player is practicing. Game mechanics are not added afterwards to make a lesson look more entertaining.",
     image: forestBackground,
   },
   {
     label: "Culture with a pulse",
     heading: "Culture With A Pulse",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    body: "Gaming, humor, creativity, and curiosity exist naturally in the same world. Our experiences are made with real people in mind.",
     blob: "magenta",
   },
   {
@@ -125,11 +123,6 @@ export default function AboutValuesPage() {
 
       <GradientBackdrop className="w-full">
         <Container className="flex flex-col items-center gap-8 py-14 text-center sm:py-20">
-          <Text size="xl" className="max-w-2xl">
-            Our first release, Innerverse, coming{" "}
-            <span className="font-medium text-accent-primary">{RELEASE_DATE_SHORT}</span>.
-          </Text>
-
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button variant="solid" href="#" className="gap-2.5">
               <svg viewBox="0 0 24 24" fill="currentColor" className="size-5 shrink-0">
