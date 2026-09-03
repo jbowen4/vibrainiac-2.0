@@ -38,6 +38,9 @@ const LEGAL_LINKS = [
   { label: "App Disclaimer", href: "/app-disclaimer" },
 ];
 
+/** Toggle back on once News is ready to be publicly linked from the site map. */
+const SHOW_NEWS = false;
+
 const SITE_MAP_SECTIONS = [
   { heading: "Home", links: [{ label: "Home", href: "/" }] },
   { heading: "Games", links: [{ label: "Games", href: "/games" }] },
@@ -47,16 +50,20 @@ const SITE_MAP_SECTIONS = [
       { label: "The Team", href: "/about/team" },
       { label: "Our Values", href: "/about/values" },
       { label: "Partners", href: "/about/partners" },
-      { label: "News", href: "/about/news" },
+      ...(SHOW_NEWS ? [{ label: "News", href: "/about/news" }] : []),
     ],
   },
-  {
-    heading: "News Articles",
-    links: NEWS_ARTICLES.filter((article) => !article.external).map((article) => ({
-      label: article.title,
-      href: `/about/news/${article.slug}`,
-    })),
-  },
+  ...(SHOW_NEWS
+    ? [
+        {
+          heading: "News Articles",
+          links: NEWS_ARTICLES.filter((article) => !article.external).map((article) => ({
+            label: article.title,
+            href: `/about/news/${article.slug}`,
+          })),
+        },
+      ]
+    : []),
   { heading: "Contact", links: [{ label: "Contact Us", href: "/contact" }] },
   { heading: "Legal", links: LEGAL_LINKS },
 ];

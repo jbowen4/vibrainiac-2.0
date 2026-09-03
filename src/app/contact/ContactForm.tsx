@@ -7,30 +7,79 @@ import { cn } from "@/lib/cn";
 
 const ROLE_OPTIONS: SelectOption[] = [
   { value: "player", label: "Player / Playtester" },
-  { value: "funder", label: "Funder" },
-  { value: "partner", label: "Potential Partner" },
-  { value: "researcher", label: "Researcher" },
+  { value: "investor", label: "Investor" },
+  { value: "partner", label: "Partner" },
+  { value: "clinician-researcher", label: "Clinician / Research" },
 ];
+
+const FORM_NAME = "contact";
+
+function encodeFormData(data: Record<string, string>) {
+  return new URLSearchParams(data).toString();
+}
+
+type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
 /**
  * "Join the Quest" signup — the Contact Us page mockup's email capture,
- * role picker, and CTA (Figma node 406:1128).
+ * role picker, and CTA (Figma node 406:1128). Submits to Netlify Forms
+ * (https://docs.netlify.com/forms/setup/#submit-html-forms-with-javascript-fetch);
+ * the static markup below (name/data-netlify attributes, hidden
+ * form-name field) is what Netlify's build-time crawler needs to
+ * register the form.
  */
 export function ContactForm() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState(ROLE_OPTIONS[0].value);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeFormData({ "form-name": FORM_NAME, email, role }),
+      });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
+      setStatus("success");
+      setEmail("");
+      setRole(ROLE_OPTIONS[0].value);
+    } catch {
+      setStatus("error");
+    }
   };
+
+  if (status === "success") {
+    return (
+      <p className="font-sans text-heading-sm font-light text-text-primary">
+        Thanks for joining the quest — we&rsquo;ll be in touch!
+      </p>
+    );
+  }
 
   return (
     <form
+      name={FORM_NAME}
+      data-netlify="true"
+      netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className="flex w-full flex-col items-center gap-6"
     >
+      <input type="hidden" name="form-name" value={FORM_NAME} />
+      <p className="hidden">
+        <label>
+          Don&rsquo;t fill this out: <input name="bot-field" />
+        </label>
+      </p>
+
       <input
         type="email"
+        name="email"
         required
         placeholder="Your Email Address"
         value={email}
@@ -51,15 +100,23 @@ export function ContactForm() {
         />
         <button
           type="submit"
+          disabled={status === "submitting"}
           className={cn(
             "inline-flex items-center justify-center rounded-full bg-accent-primary px-10 py-4",
             "font-sans text-heading-sm font-normal text-text-primary shadow-elevated",
-            "transition-colors duration-(--transition-fast) ease-standard hover:bg-accent-primary/85"
+            "transition-colors duration-(--transition-fast) ease-standard hover:bg-accent-primary/85",
+            "disabled:cursor-not-allowed disabled:opacity-70"
           )}
         >
-          Join the Quest
+          {status === "submitting" ? "Sending..." : "Join the Quest"}
         </button>
       </div>
+
+      {status === "error" && (
+        <p className="font-sans text-body-sm text-red-400">
+          Something went wrong. Please try again.
+        </p>
+      )}
     </form>
   );
 }
