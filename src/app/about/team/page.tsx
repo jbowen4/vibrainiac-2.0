@@ -22,23 +22,12 @@ const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
 ];
 
 const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: "youtube", href: "#" },
-  { platform: "instagram", href: "#" },
-  { platform: "x", href: "#" },
-  { platform: "twitter", href: "#" },
-  { platform: "tiktok", href: "#" },
-  { platform: "facebook", href: "#" },
   { platform: "linkedin", href: "#" },
 ];
 
 const FOOTER_LINKS = [
   { label: "Terms of Service", href: "/terms-of-service" },
   { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Safe and Fair Play Policy", href: "/safe-and-fair-play" },
-  { label: "Accessibility Statement", href: "/accessibility" },
-  { label: "Other Legal Docs", href: "/legal" },
-  { label: "Media Center", href: "/media-center" },
-  { label: "Our Domains", href: "/domains" },
   { label: "Site Map", href: "/site-map" },
 ];
 

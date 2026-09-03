@@ -23,23 +23,12 @@ const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
 ];
 
 const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'youtube', href: '#' },
-  { platform: 'instagram', href: '#' },
-  { platform: 'x', href: '#' },
-  { platform: 'twitter', href: '#' },
-  { platform: 'tiktok', href: '#' },
-  { platform: 'facebook', href: '#' },
   { platform: 'linkedin', href: '#' },
 ];
 
 const FOOTER_LINKS = [
   { label: 'Terms of Service', href: '/terms-of-service' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: 'Safe and Fair Play Policy', href: '/safe-and-fair-play' },
-  { label: 'Accessibility Statement', href: '/accessibility' },
-  { label: 'Other Legal Docs', href: '/legal' },
-  { label: 'Media Center', href: '/media-center' },
-  { label: 'Our Domains', href: '/domains' },
   { label: 'Site Map', href: '/site-map' },
 ];
 
@@ -80,12 +69,15 @@ export default function AboutPartnersPage() {
           <div className='flex flex-1 items-center py-16 sm:py-24'>
             <Container className='grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start md:gap-16'>
               <div className='flex flex-col items-start gap-8'>
-                <Heading size='display'>
+                <Heading size='lg' as='h1' className='sm:text-display'>
                   For <br />
                   Funders & <br />
                   <span className='text-accent-secondary'>Founders</span>
                 </Heading>
-                <Button variant='solid' href='/contact'>
+                <Button
+                  variant='solid'
+                  href='/contact'
+                  className='px-4! text-body-sm! sm:px-6! sm:text-heading-md!'>
                   Contact for Partnerships
                 </Button>
               </div>

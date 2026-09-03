@@ -1,12 +1,13 @@
 import { Container } from "@/components/Container";
 import { Footer } from "@/components/Footer";
 import { GradientBackdrop } from "@/components/GradientBackdrop";
-import { NewsCard, type NewsCardProps } from "@/components/NewsCard";
+import { Heading } from "@/components/Heading";
 import { NavDropdown, Navbar } from "@/components/Navbar";
 import { NavLink } from "@/components/NavLink";
 import { SocialIcon, type SocialPlatform } from "@/components/SocialIcon";
-import heroBackground from "../../../../public/home/hero-background.png";
-import { NEWS_ARTICLES } from "./news-data";
+import { Text } from "@/components/Text";
+import heroBackground from "../../../public/home/hero-background.png";
+import { NEWS_ARTICLES } from "../about/news/news-data";
 
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
@@ -31,15 +32,36 @@ const FOOTER_LINKS = [
   { label: "Site Map", href: "/site-map" },
 ];
 
-const NEWS_ITEMS: NewsCardProps[] = NEWS_ARTICLES.map((article) => ({
-  isNew: article.isNew,
-  title: article.title,
-  description: article.description,
-  href: article.external?.href ?? `/about/news/${article.slug}`,
-  buttonLabel: article.external?.buttonLabel,
-}));
+const LEGAL_LINKS = [
+  { label: "Terms of Service", href: "/terms-of-service" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "App Disclaimer", href: "/app-disclaimer" },
+];
 
-export default function AboutNewsPage() {
+const SITE_MAP_SECTIONS = [
+  { heading: "Home", links: [{ label: "Home", href: "/" }] },
+  { heading: "Games", links: [{ label: "Games", href: "/games" }] },
+  {
+    heading: "About",
+    links: [
+      { label: "The Team", href: "/about/team" },
+      { label: "Our Values", href: "/about/values" },
+      { label: "Partners", href: "/about/partners" },
+      { label: "News", href: "/about/news" },
+    ],
+  },
+  {
+    heading: "News Articles",
+    links: NEWS_ARTICLES.filter((article) => !article.external).map((article) => ({
+      label: article.title,
+      href: `/about/news/${article.slug}`,
+    })),
+  },
+  { heading: "Contact", links: [{ label: "Contact Us", href: "/contact" }] },
+  { heading: "Legal", links: LEGAL_LINKS },
+];
+
+export default function SiteMapPage() {
   return (
     <>
       <GradientBackdrop backgroundImage={heroBackground} fade className="min-h-screen">
@@ -66,14 +88,27 @@ export default function AboutNewsPage() {
 
           <div className="flex-1 py-16 sm:py-24">
             <Container>
-              <div
-                className="grid justify-center gap-12.5"
-                style={{ gridTemplateColumns: "repeat(auto-fit, 351px)" }}
-              >
-                {NEWS_ITEMS.map((item) => (
-                  <NewsCard key={item.title} {...item} />
+              <Heading as="h1" size="xl" className="mb-10 text-center">
+                Site Map
+              </Heading>
+              <nav aria-label="Site Map" className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                {SITE_MAP_SECTIONS.map((section) => (
+                  <div key={section.heading}>
+                    <Heading as="h2" size="sm" className="mb-4">
+                      {section.heading}
+                    </Heading>
+                    <ul className="flex flex-col gap-3">
+                      {section.links.map((link) => (
+                        <li key={link.href}>
+                          <Text as="a" href={link.href} size="sm" tone="secondary">
+                            {link.label}
+                          </Text>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </div>
+              </nav>
             </Container>
           </div>
         </div>

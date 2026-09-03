@@ -28,23 +28,12 @@ const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
 ];
 
 const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: "youtube", href: "#" },
-  { platform: "instagram", href: "#" },
-  { platform: "x", href: "#" },
-  { platform: "twitter", href: "#" },
-  { platform: "tiktok", href: "#" },
-  { platform: "facebook", href: "#" },
   { platform: "linkedin", href: "#" },
 ];
 
 const FOOTER_LINKS = [
   { label: "Terms of Service", href: "/terms-of-service" },
   { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "Safe and Fair Play Policy", href: "/safe-and-fair-play" },
-  { label: "Accessibility Statement", href: "/accessibility" },
-  { label: "Other Legal Docs", href: "/legal" },
-  { label: "Media Center", href: "/media-center" },
-  { label: "Our Domains", href: "/domains" },
   { label: "Site Map", href: "/site-map" },
 ];
 
@@ -168,11 +157,11 @@ export default function AboutValuesPage() {
         <WireframeGlobe className="top-1/2 left-1/2 size-[36rem] -translate-x-1/2 -translate-y-1/2 opacity-25 sm:size-[46rem]" />
         <Container className="relative flex flex-col items-center gap-6 text-center">
           <Heading size="lg" className="!text-accent-secondary">
-            Global &amp; Fully Remote
+            Fully Remote
           </Heading>
           <Text size="lg" className="max-w-3xl">
-            Though many of us are based in Orlando, FL, our team spans the United States &amp;
-            Jamaica. From Florida and Georgia to Washington Kingston and beyond, we bring together
+            Though many of us are based in Orlando, FL, our team spans the United States.
+            From Florida and Georgia to Washington and beyond, we bring together
             diverse perspectives, experiences, and creative talents with one shared goal: creating
             meaningful experiences that resonate with you.
           </Text>

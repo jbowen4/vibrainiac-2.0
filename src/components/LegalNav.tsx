@@ -15,8 +15,7 @@ export interface LegalNavProps {
   /**
    * Below `sm`, stacks the links one per line with no bullets and a smaller
    * type size, reverting to the horizontal bulleted pill at `sm` and up.
-   * Used by the legal doc pages' header nav — the Games page footer nav
-   * stays horizontal at every size, so it leaves this off.
+   * Used by the legal doc pages' header nav and the Games page footer nav.
    */
   stackOnMobile?: boolean;
 }

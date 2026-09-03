@@ -38,23 +38,12 @@ const LEGAL_NAV_LINKS = [
 ];
 
 const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'youtube', href: '#' },
-  { platform: 'instagram', href: '#' },
-  { platform: 'x', href: '#' },
-  { platform: 'twitter', href: '#' },
-  { platform: 'tiktok', href: '#' },
-  { platform: 'facebook', href: '#' },
   { platform: 'linkedin', href: '#' },
 ];
 
 const FOOTER_LINKS = [
   { label: 'Terms of Service', href: '/terms-of-service' },
   { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: 'Safe and Fair Play Policy', href: '/safe-and-fair-play' },
-  { label: 'Accessibility Statement', href: '/accessibility' },
-  { label: 'Other Legal Docs', href: '/legal' },
-  { label: 'Media Center', href: '/media-center' },
-  { label: 'Our Domains', href: '/domains' },
   { label: 'Site Map', href: '/site-map' },
 ];
 
@@ -234,7 +223,7 @@ export default function GamesPage() {
             </Container>
 
             <div className='mx-auto flex w-full shrink-0 justify-center pb-6 md:pb-4 lg:max-w-225'>
-              <LegalNav links={LEGAL_NAV_LINKS} className='w-full' />
+              <LegalNav links={LEGAL_NAV_LINKS} stackOnMobile className='w-full' />
             </div>
           </div>
         </div>
