@@ -108,35 +108,46 @@ export function LegalPageShell({ activeHref, children }: LegalPageShellProps) {
             />
           </Container>
 
-          <div className='flex min-h-0 flex-1 flex-col gap-6 py-6 md:py-8'>
-            <Container className='shrink-0'>
-              <div className='flex flex-wrap items-center gap-4 sm:gap-6'>
-                <Button variant='ghost' href='/games'>
-                  <svg aria-hidden viewBox='0 0 16 12' className='size-4'>
-                    <path
-                      d='M6.5 1 1 6l5.5 5M1.5 6h13.5'
-                      stroke='currentColor'
-                      strokeWidth={1.5}
-                      fill='none'
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                    />
-                  </svg>
-                  Return
-                </Button>
-                <LegalNav
-                  links={LEGAL_NAV_LINKS}
-                  activeHref={activeHref}
-                  className='w-full'
-                />
-              </div>
-            </Container>
-
+          <div className='flex min-h-0 flex-1 flex-col py-6 md:py-8'>
             <Container className='flex min-h-0 flex-1 flex-col'>
-              <div className='flex min-h-0 flex-1 flex-col rounded-t-md border-t-2 border-accent-primary pt-6'>
-                <ScrollArea className='pr-2'>
-                  <div className='flex flex-col gap-5 pb-6'>{children}</div>
-                </ScrollArea>
+              <div
+                className='relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-[5px]'
+                style={{
+                  background:
+                    'linear-gradient(270deg, rgba(1, 4, 15, 0) 0%, #01040F 100%)',
+                  backdropFilter: 'blur(4.55px)',
+                }}>
+                <div aria-hidden className='h-[5px] w-full shrink-0 bg-accent-primary' />
+
+                <div className='flex min-h-0 flex-1 flex-col gap-4 px-6 py-6 sm:px-12 sm:py-8 lg:px-16'>
+                  <div className='flex flex-col gap-4 sm:flex-row sm:items-center'>
+                    <Button variant='ghost' href='/games' className='shrink-0'>
+                      <svg aria-hidden viewBox='0 0 16 12' className='size-4'>
+                        <path
+                          d='M6.5 1 1 6l5.5 5M1.5 6h13.5'
+                          stroke='currentColor'
+                          strokeWidth={1.5}
+                          fill='none'
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                        />
+                      </svg>
+                      Return
+                    </Button>
+                    <div className='flex w-full sm:flex-1 sm:justify-center'>
+                      <LegalNav
+                        links={LEGAL_NAV_LINKS}
+                        activeHref={activeHref}
+                        stackOnMobile
+                        className='w-full sm:w-auto lg:px-28'
+                      />
+                    </div>
+                  </div>
+
+                  <ScrollArea className='pr-2 sm:pr-4'>
+                    <div className='flex flex-col gap-5 pb-6'>{children}</div>
+                  </ScrollArea>
+                </div>
               </div>
             </Container>
           </div>

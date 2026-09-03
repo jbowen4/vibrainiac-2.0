@@ -12,6 +12,13 @@ export interface LegalNavProps {
   /** href of the link that matches the current page, if any. */
   activeHref?: string;
   className?: string;
+  /**
+   * Below `sm`, stacks the links one per line with no bullets and a smaller
+   * type size, reverting to the horizontal bulleted pill at `sm` and up.
+   * Used by the legal doc pages' header nav — the Games page footer nav
+   * stays horizontal at every size, so it leaves this off.
+   */
+  stackOnMobile?: boolean;
 }
 
 /**
@@ -19,14 +26,22 @@ export interface LegalNavProps {
  * Policy, App Disclaimer) — recurs at the bottom of the Games page and the
  * top of each legal doc page, where it also highlights the active doc.
  */
-export function LegalNav({ links, activeHref, className }: LegalNavProps) {
+export function LegalNav({
+  links,
+  activeHref,
+  className,
+  stackOnMobile = false,
+}: LegalNavProps) {
   return (
     <nav
       aria-label="Legal"
       className={cn(
-        "flex flex-wrap items-center justify-between gap-x-3 gap-y-2 rounded-full",
+        "flex flex-wrap gap-x-3 gap-y-2 rounded-full",
         "border border-accent-primary/20 bg-background-elevated/40 px-6 py-3 sm:px-10",
         "shadow-elevated backdrop-blur-glass-md",
+        stackOnMobile
+          ? "flex-col items-center justify-center gap-y-1.5 sm:flex-row sm:items-center sm:justify-between sm:gap-y-2"
+          : "items-center justify-between",
         className
       )}
     >
@@ -35,7 +50,13 @@ export function LegalNav({ links, activeHref, className }: LegalNavProps) {
         return (
           <Fragment key={link.href}>
             {index > 0 && (
-              <span aria-hidden className="text-accent-primary">
+              <span
+                aria-hidden
+                className={cn(
+                  "text-accent-primary",
+                  stackOnMobile && "hidden sm:inline"
+                )}
+              >
                 &bull;
               </span>
             )}
@@ -43,7 +64,10 @@ export function LegalNav({ links, activeHref, className }: LegalNavProps) {
               href={link.href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "flex items-center text-center text-[24px] leading-[33px] font-bold uppercase",
+                "flex items-center text-center font-bold uppercase",
+                stackOnMobile
+                  ? "text-[16px] leading-[22px] sm:text-[24px] sm:leading-[33px]"
+                  : "text-[24px] leading-[33px]",
                 "transition-colors duration-(--transition-fast) ease-standard",
                 active
                   ? "text-text-primary drop-shadow-(--shadow-glow-accent)"
