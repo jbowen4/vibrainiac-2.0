@@ -69,6 +69,25 @@ export const TEAM_MEMBERS: TeamMember[] = [
     avatar: teamAvatar('/team-headshots/Alex_Headshot.png', 'AC', 'sunset'),
   },
   {
+    name: 'Joann Pollard',
+    title: 'Chief Marketing Officer',
+    description: [
+      'Joann Pollard is a marketing leader with more than 20 years of experience building brands, developing audiences, and creating data-driven marketing strategies across gaming, education, technology, and financial services. Her expertise spans brand strategy, digital and lifecycle marketing, CRM, audience engagement, content strategy, and global partnerships.',
+      'During her career at Electronic Arts, Joann led high-profile initiatives for globally recognized gaming franchises, developed multi-year brand partnerships with companies, and created culturally relevant campaigns designed to deepen audience engagement.',
+      'As Chief Marketing Officer of Vibrainiac, Joann brings her experience in gaming, education, storytelling, and audience strategy to help build a brand that uses the power of play to create meaningful, real-world impact.',
+    ],
+    avatar: teamAvatar('/team-headshots/Joann_Headshot.png', 'JP', 'magenta'),
+  },
+  {
+    name: 'Rob Diaz',
+    title: 'Chief Creative Officer',
+    description: [
+      'I’ve been a part of the gaming industry since 2009, starting out in QA before sneaking into UI/UX where no one asked any questions, and eventually finding my way into creative leadership. Over the past 15+ years, I’ve had the pleasure to work on exciting games across PC, console, and mobile, including SMITE 2, Madden NFL, and NBA LIVE.',
+      'Having been a UX/UI designer, Art Lead and often serving as a feature and systems designer during my time at EA SPORTS and Hi-Rez Ventures, I’m now leading the creative direction to building fun and engaging experiences with the team at Vibrainiac Games.',
+    ],
+    avatar: teamAvatar('/team-headshots/Rob_Headshot.png', 'R', 'sunset'),
+  },
+  {
     name: 'Kelly Jean-Ware',
     title: 'Chief of Staff',
     description: [
@@ -115,19 +134,10 @@ export const TEAM_MEMBERS: TeamMember[] = [
       'Wayne is the Lead Backend Developer at Vibrainiac, bringing over six years of professional experience across software engineering, artificial intelligence, data science, medical devices, and surgical robotics. His career has been shaped by solving technically demanding problems where reliability matters, and he now applies that experience to building the backend systems that help bring Vibrainiac’s games to life.',
       'He holds bachelor’s degrees in Computer Science and Computer Engineering from Florida Atlantic University. Outside the studio, Wayne has mentored a high school FIRST Robotics Competition (FRC) team since 2015, helping students combine creativity, teamwork, and engineering to turn ambitious ideas into working robots.',
     ],
-    avatar: teamAvatar(null, 'W', 'violet'),
+    avatar: teamAvatar(null, 'WS', 'violet'),
   },
   {
-    name: 'Rob Diaz',
-    title: 'Chief Creative Officer',
-    description: [
-      'I’ve been a part of the gaming industry since 2009, starting out in QA before sneaking into UI/UX where no one asked any questions, and eventually finding my way into creative leadership. Over the past 15+ years, I’ve had the pleasure to work on exciting games across PC, console, and mobile, including SMITE 2, Madden NFL, and NBA LIVE.',
-      'Having been a UX/UI designer, Art Lead and often serving as a feature and systems designer during my time at EA SPORTS and Hi-Rez Ventures, I’m now leading the creative direction to building fun and engaging experiences with the team at Vibrainiac Games.',
-    ],
-    avatar: teamAvatar('/team-headshots/Rob_Headshot.png', 'R', 'sunset'),
-  },
-  {
-    name: 'SJ',
+    name: 'SJ Richardson',
     title: 'Security Lead',
     description: [
       'SJ is a security lead with over a decade of experience protecting enterprise systems across the gaming and financial services industries. Her background spans vulnerability management, identity and access management, and endpoint security, giving her a practical, hands-on approach to defending critical systems and users.',
@@ -136,22 +146,22 @@ export const TEAM_MEMBERS: TeamMember[] = [
     avatar: teamAvatar('/team-headshots/SJ_Headshot.png', 'SJ', 'violet'),
   },
   {
-    name: 'Kini',
+    name: 'Kini Foster',
     title: 'Web & Software Developer',
     description: [
       'Kini is a web and software developer who survived the screech of dial-up Internet 30 years ago and never logged off. She has more than 16 years of diverse tech experience having touched everything from SQL to Python, physical desktops to Docker containers and worked in a number of industries from legal to gaming with transit in-between. She’s convinced every problem can be solved…eventually.',
       'Despite her tech background, she completed her Bachelor of Arts in Africana Studies at Georgia State University (the real GSU) with a focus in researching family and community, and still believes that humans are cooler than robots.',
     ],
-    avatar: teamAvatar('/team-headshots/Kini_Headshot.png', 'K', 'sunset'),
+    avatar: teamAvatar('/team-headshots/Kini_Headshot.png', 'KF', 'sunset'),
   },
   {
-    name: 'Joann Pollard',
-    title: 'Chief Marketing Officer',
+    name: 'Antoine Brown',
+    title: 'Lead 3D Artist',
     description: [
-      'Joann Pollard is a marketing leader with more than 20 years of experience building brands, developing audiences, and creating data-driven marketing strategies across gaming, education, technology, and financial services. Her expertise spans brand strategy, digital and lifecycle marketing, CRM, audience engagement, content strategy, and global partnerships.',
-      'During her career at Electronic Arts, Joann led high-profile initiatives for globally recognized gaming franchises, developed multi-year brand partnerships with companies, and created culturally relevant campaigns designed to deepen audience engagement.',
-      'As Chief Marketing Officer of Vibrainiac, Joann brings her experience in gaming, education, storytelling, and audience strategy to help build a brand that uses the power of play to create meaningful, real-world impact.',
+      'With three decades of experience in graphic art and illustration, Antoine Brown is a multidisciplinary artist bringing imagination to life across walls, screens, and interactive worlds. A lifelong storyteller, Antoine blends traditional artistic craftsmanship with years of study in Unreal Engine to create immersive animations and digital environments.',
+      'Alongside this artistic career, Antoine spent years at the Buffalo Psychiatric Center, where creativity, empathy, and human connection shaped a design approach that’s not just visually compelling, but deeply human.',
+      'Today, as Lead 3D Artist, Antoine combines artistic mastery and technical skill to create worlds that invite people to feel, explore, and connect.',
     ],
-    avatar: teamAvatar('/team-headshots/Joann_Headshot.png', 'JP', 'magenta'),
+    avatar: teamAvatar('/team-headshots/Antoine_Headshot.png', 'AB', 'magenta'),
   },
 ];
