@@ -84,8 +84,8 @@ function WireframeGlobe({ className }: { className?: string }) {
 export default function AboutValuesPage() {
   return (
     <>
-      <GradientBackdrop backgroundImage={heroBackground} className="min-h-screen">
-        <div className="flex min-h-screen flex-col">
+      <GradientBackdrop backgroundImage={heroBackground}>
+        <div className="flex flex-col">
           <Container>
             <Navbar
               start={

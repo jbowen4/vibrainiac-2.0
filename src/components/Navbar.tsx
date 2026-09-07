@@ -1,7 +1,8 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { useContext, useState } from 'react';
+import { useContext, useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { DropdownMenu } from 'radix-ui';
 
@@ -135,9 +136,26 @@ export function Navbar({
   className,
 }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const [panelTop, setPanelTop] = useState(0);
 
-  return (
+  useLayoutEffect(() => {
+    if (!mobileOpen) return;
+
+    const updatePosition = () => {
+      if (navRef.current) {
+        setPanelTop(navRef.current.getBoundingClientRect().bottom);
+      }
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [mobileOpen]);
+
+  const navEl = (
     <nav
+      ref={navRef}
       className={cn(
         'relative grid w-full grid-cols-[1fr_auto_1fr] items-center gap-3 py-3 sm:gap-6',
         className,
@@ -207,20 +225,30 @@ export function Navbar({
           />
         </button>
       </div>
-
-      {mobileOpen && (
-        <div
-          id='mobile-nav-panel'
-          className='absolute top-full left-1/2 z-40 w-screen -translate-x-1/2 md:hidden'>
-          <div className='flex flex-col items-center gap-8 border-t border-border-hairline/40 bg-background-primary px-6 py-8 shadow-elevated'>
-            <MobileNavContext.Provider value={true}>
-              <div className='flex flex-col items-center gap-6'>{start}</div>
-              <div className='flex flex-col items-center gap-6'>{end}</div>
-            </MobileNavContext.Provider>
-            <div className='flex items-center gap-5'>{social}</div>
-          </div>
-        </div>
-      )}
     </nav>
+  );
+
+  return (
+    <>
+      {navEl}
+      {/* Portalled to <body> so the panel escapes any ancestor's `overflow-hidden` (e.g. GradientBackdrop) instead of being clipped by it. */}
+      {mobileOpen &&
+        typeof document !== 'undefined' &&
+        createPortal(
+          <div
+            id='mobile-nav-panel'
+            style={{ top: panelTop }}
+            className='fixed inset-x-0 z-40 md:hidden'>
+            <div className='flex flex-col items-center gap-8 border-t border-border-hairline/40 bg-background-primary px-6 py-8 shadow-elevated'>
+              <MobileNavContext.Provider value={true}>
+                <div className='flex flex-col items-center gap-6'>{start}</div>
+                <div className='flex flex-col items-center gap-6'>{end}</div>
+              </MobileNavContext.Provider>
+              <div className='flex items-center gap-5'>{social}</div>
+            </div>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }
