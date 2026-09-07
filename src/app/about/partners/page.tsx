@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import { Button } from '@/components/Button';
 import { Container } from '@/components/Container';
 import { Footer } from '@/components/Footer';
@@ -9,16 +11,18 @@ import { SocialIcon, type SocialPlatform } from '@/components/SocialIcon';
 import { Text } from '@/components/Text';
 import heroBackground from '../../../../public/home/hero-background.png';
 
+export const metadata: Metadata = {
+  title: 'Partners',
+  description:
+    'Vibrainiac is connecting with funders, researchers, and strategic partners working across play-based learning and emotional skill-building.',
+};
+
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
   { label: 'Our Values', href: '/about/values' },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'x', href: '#' },
-  { platform: 'tiktok', href: '#' },
-  { platform: 'instagram', href: '#' },
-  { platform: 'youtube', href: '#' },
   { platform: 'linkedin', href: '#' },
 ];
 

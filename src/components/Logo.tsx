@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 import { cn } from '@/lib/cn';
-import brainIcon from '../../public/VibrainiacLogo_W.png';
-import brainIconBlack from '../../public/VibrainiacLogo_Dark.png';
+import brainIcon from '../../public/brand/brain-icon.png';
+import brainIconBlack from '../../public/brand/brain-icon-black.png';
 
 export interface LogoProps {
   size?: number;

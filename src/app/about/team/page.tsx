@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { Container } from "@/components/Container";
 import { Footer } from "@/components/Footer";
 import { GradientBackdrop } from "@/components/GradientBackdrop";
@@ -8,16 +10,18 @@ import heroBackground from "../../../../public/home/hero-background.png";
 import { TeamCarousel } from "./TeamCarousel";
 import { TEAM_MEMBERS } from "./team-members";
 
+export const metadata: Metadata = {
+  title: "The Team",
+  description:
+    "Meet the team behind Vibrainiac Games — industry veterans building games with real people in mind.",
+};
+
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team", active: true },
   { label: "Our Values", href: "/about/values" },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: "x", href: "#" },
-  { platform: "tiktok", href: "#" },
-  { platform: "instagram", href: "#" },
-  { platform: "youtube", href: "#" },
   { platform: "linkedin", href: "#" },
 ];
 

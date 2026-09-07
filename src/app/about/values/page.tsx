@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { Button } from "@/components/Button";
 import { Container } from "@/components/Container";
 import { Footer } from "@/components/Footer";
@@ -12,16 +14,18 @@ import forestBackground from "../../../../public/news/forest-background.png";
 import heroBackground from "../../../../public/home/hero-background.png";
 import { ValuesTabs, type ValuesTab } from "./ValuesTabs";
 
+export const metadata: Metadata = {
+  title: "Our Values",
+  description:
+    "Vibrainiac is designed around three principles: play with purpose, culture with a pulse, and growth without shame.",
+};
+
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
   { label: "Our Values", href: "/about/values", active: true },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: "x", href: "#" },
-  { platform: "tiktok", href: "#" },
-  { platform: "instagram", href: "#" },
-  { platform: "youtube", href: "#" },
   { platform: "linkedin", href: "#" },
 ];
 
@@ -39,7 +43,7 @@ const VALUES_TABS: ValuesTab[] = [
   {
     label: "Play With Purpose",
     heading: "Play With Purpose",
-    body: "The story, challenges choices and feedback are connected in what the player is practicing. Game mechanics are not added afterwards to make a lesson look more entertaining.",
+    body: "The story, challenges, choices and feedback are connected in what the player is practicing. Game mechanics are not added afterwards to make a lesson look more entertaining.",
     image: forestBackground,
   },
   {
@@ -80,8 +84,8 @@ function WireframeGlobe({ className }: { className?: string }) {
 export default function AboutValuesPage() {
   return (
     <>
-      <GradientBackdrop backgroundImage={heroBackground}>
-        <div className="flex flex-col">
+      <GradientBackdrop backgroundImage={heroBackground} className="min-h-screen">
+        <div className="flex min-h-screen flex-col">
           <Container>
             <Navbar
               start={

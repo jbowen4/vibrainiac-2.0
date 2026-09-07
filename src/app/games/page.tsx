@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import { Button } from '@/components/Button';
@@ -18,16 +19,18 @@ import innerverseOwl from '../../../public/games/innerverse-owl-logo.png';
 const RELEASE_DATE = 'October 2, 2026';
 const RELEASE_DATE_SHORT = '10/02/26';
 
+export const metadata: Metadata = {
+  title: 'Games',
+  description:
+    'Innerverse is Vibrainiac’s inaugural mobile game, designed to make emotional growth feel active, approachable, and human.',
+};
+
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
   { label: 'Our Values', href: '/about/values' },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'x', href: '#' },
-  { platform: 'tiktok', href: '#' },
-  { platform: 'instagram', href: '#' },
-  { platform: 'youtube', href: '#' },
   { platform: 'linkedin', href: '#' },
 ];
 

@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { Container } from "@/components/Container";
 import { Footer } from "@/components/Footer";
 import { GradientBackdrop } from "@/components/GradientBackdrop";
@@ -9,16 +11,17 @@ import { Text } from "@/components/Text";
 import heroBackground from "../../../public/home/hero-background.png";
 import { NEWS_ARTICLES } from "../about/news/news-data";
 
+export const metadata: Metadata = {
+  title: "Site Map",
+  description: "Browse every page on the Vibrainiac Games website.",
+};
+
 const ABOUT_ITEMS = [
   { label: "The Team", href: "/about/team" },
   { label: "Our Values", href: "/about/values" },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: "x", href: "#" },
-  { platform: "tiktok", href: "#" },
-  { platform: "instagram", href: "#" },
-  { platform: "youtube", href: "#" },
   { platform: "linkedin", href: "#" },
 ];
 

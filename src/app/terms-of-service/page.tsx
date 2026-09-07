@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
+
 import { Heading } from "@/components/Heading";
 import { LegalPageShell } from "@/components/LegalPageShell";
 import { Text } from "@/components/Text";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "Terms of Service and End User License Agreement for Vibrainiac Games.",
+};
 
 export default function TermsOfServicePage() {
   return (

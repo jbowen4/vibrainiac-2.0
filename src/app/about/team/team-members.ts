@@ -126,4 +126,32 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
     avatar: teamAvatar('/team-headshots/Rob_Headshot.png', 'R', 'sunset'),
   },
+  {
+    name: 'SJ',
+    title: 'Security Lead',
+    description: [
+      'SJ is a security lead with over a decade of experience protecting enterprise systems across the gaming and financial services industries. Her background spans vulnerability management, identity and access management, and endpoint security, giving her a practical, hands-on approach to defending critical systems and users.',
+      'She now applies that expertise at Vibrainiac, safeguarding the technology, teams, and players behind world-class gaming experiences.',
+    ],
+    avatar: teamAvatar('/team-headshots/SJ_Headshot.png', 'SJ', 'violet'),
+  },
+  {
+    name: 'Kini',
+    title: 'Web & Software Developer',
+    description: [
+      'Kini is a web and software developer who survived the screech of dial-up Internet 30 years ago and never logged off. She has more than 16 years of diverse tech experience having touched everything from SQL to Python, physical desktops to Docker containers and worked in a number of industries from legal to gaming with transit in-between. She’s convinced every problem can be solved…eventually.',
+      'Despite her tech background, she completed her Bachelor of Arts in Africana Studies at Georgia State University (the real GSU) with a focus in researching family and community, and still believes that humans are cooler than robots.',
+    ],
+    avatar: teamAvatar('/team-headshots/Kini_Headshot.png', 'K', 'sunset'),
+  },
+  {
+    name: 'Joann Pollard',
+    title: 'Chief Marketing Officer',
+    description: [
+      'Joann Pollard is a marketing leader with more than 20 years of experience building brands, developing audiences, and creating data-driven marketing strategies across gaming, education, technology, and financial services. Her expertise spans brand strategy, digital and lifecycle marketing, CRM, audience engagement, content strategy, and global partnerships.',
+      'During her career at Electronic Arts, Joann led high-profile initiatives for globally recognized gaming franchises, developed multi-year brand partnerships with companies, and created culturally relevant campaigns designed to deepen audience engagement.',
+      'As Chief Marketing Officer of Vibrainiac, Joann brings her experience in gaming, education, storytelling, and audience strategy to help build a brand that uses the power of play to create meaningful, real-world impact.',
+    ],
+    avatar: teamAvatar('/team-headshots/Joann_Headshot.png', 'JP', 'magenta'),
+  },
 ];

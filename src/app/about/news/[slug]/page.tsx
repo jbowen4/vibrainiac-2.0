@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -16,10 +17,6 @@ const ABOUT_ITEMS = [
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: "x", href: "#" },
-  { platform: "tiktok", href: "#" },
-  { platform: "instagram", href: "#" },
-  { platform: "youtube", href: "#" },
   { platform: "linkedin", href: "#" },
 ];
 
@@ -35,6 +32,27 @@ const FOOTER_LINKS = [
 
 export function generateStaticParams() {
   return NEWS_ARTICLES.map((article) => ({ slug: article.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getNewsArticle(slug);
+
+  if (!article) {
+    return {};
+  }
+
+  return {
+    title: article.title,
+    description: article.description,
+    openGraph: article.image
+      ? { title: article.title, description: article.description, images: [article.image] }
+      : undefined,
+  };
 }
 
 export default async function NewsArticlePage({

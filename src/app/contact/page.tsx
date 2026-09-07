@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 
 import { Container } from '@/components/Container';
@@ -12,16 +13,17 @@ import contactUsText from '../../../public/contact/contact-us-text.png';
 import heroBackground from '../../../public/home/hero-background.png';
 import { ContactForm } from './ContactForm';
 
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description: 'Get in touch with the Vibrainiac Games team.',
+};
+
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
   { label: 'Our Values', href: '/about/values' },
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'x', href: '#' },
-  { platform: 'tiktok', href: '#' },
-  { platform: 'instagram', href: '#' },
-  { platform: 'youtube', href: '#' },
   { platform: 'linkedin', href: '#' },
 ];
 

@@ -10,9 +10,8 @@ import { NavLink } from '@/components/NavLink';
 import { SocialIcon, type SocialPlatform } from '@/components/SocialIcon';
 import { Text } from '@/components/Text';
 import brainImg from '../../public/brain-img.png';
-import newWordmark from '../../public/new-wordmark.png';
 import topographicBrain from '../../public/Topographic_Brain.png';
-import vibrainiacLogoC from '../../public/VibrainiacLogo_C.png';
+import newHomePageImage from '../../public/new-home-page-img.png';
 
 const ABOUT_ITEMS = [
   { label: 'The Team', href: '/about/team' },
@@ -20,10 +19,6 @@ const ABOUT_ITEMS = [
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'x', href: '#' },
-  { platform: 'tiktok', href: '#' },
-  { platform: 'instagram', href: '#' },
-  { platform: 'youtube', href: '#' },
   { platform: 'linkedin', href: '#' },
 ];
 
@@ -73,15 +68,10 @@ export default function Home() {
 
           <div className='flex flex-1 flex-col items-center justify-center gap-6 px-6 py-12 sm:gap-8'>
             <Image
-              src={vibrainiacLogoC}
+              src={newHomePageImage}
               alt='Vibrainiac'
               priority
               className='h-auto w-full max-w-170'
-            />
-            <Image
-              src={newWordmark}
-              alt='Vibrainiac'
-              className='h-auto w-full max-w-60 sm:max-w-sm md:max-w-md'
             />
           </div>
         </div>
