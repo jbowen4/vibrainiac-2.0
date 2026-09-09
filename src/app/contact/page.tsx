@@ -24,11 +24,17 @@ const ABOUT_ITEMS = [
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'linkedin', href: '#' },
+  {
+    platform: 'linkedin',
+    href: 'https://www.linkedin.com/company/vibrainiac/',
+  },
 ];
 
 const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'linkedin', href: '#' },
+  {
+    platform: 'linkedin',
+    href: 'https://www.linkedin.com/company/vibrainiac/',
+  },
 ];
 
 const FOOTER_LINKS = [
@@ -88,9 +94,8 @@ export default function ContactPage() {
                     The summit is only the beginning.
                   </Heading>
                   <Text size='lg' className='max-w-2xl'>
-                    Be among the first to see what we&rsquo;re building,
-                    follow the development journey and hear when playtesting
-                    begins.
+                    Be among the first to see what we&rsquo;re building, follow
+                    the development journey and hear when playtesting begins.
                   </Text>
                 </div>
 

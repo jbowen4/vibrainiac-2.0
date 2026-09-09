@@ -181,7 +181,7 @@ export function Navbar({
             )}>
             {logo ?? (
               <>
-                <span className='md:hidden'>
+                <span className='mt-2 md:hidden'>
                   <Logo size={50} variant='light' />
                 </span>
                 <span className='hidden md:block'>

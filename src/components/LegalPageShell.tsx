@@ -21,11 +21,17 @@ const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
   { platform: 'tiktok', href: '#' },
   { platform: 'instagram', href: '#' },
   { platform: 'youtube', href: '#' },
-  { platform: 'linkedin', href: '#' },
+  {
+    platform: 'linkedin',
+    href: 'https://www.linkedin.com/company/vibrainiac/',
+  },
 ];
 
 const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'linkedin', href: '#' },
+  {
+    platform: 'linkedin',
+    href: 'https://www.linkedin.com/company/vibrainiac/',
+  },
 ];
 
 const FOOTER_LINKS = [
@@ -106,7 +112,10 @@ export function LegalPageShell({ activeHref, children }: LegalPageShellProps) {
                     'linear-gradient(270deg, rgba(1, 4, 15, 0) 0%, #01040F 100%)',
                   backdropFilter: 'blur(4.55px)',
                 }}>
-                <div aria-hidden className='h-[5px] w-full shrink-0 bg-accent-primary' />
+                <div
+                  aria-hidden
+                  className='h-[5px] w-full shrink-0 bg-accent-primary'
+                />
 
                 <div className='flex min-h-0 flex-1 flex-col gap-4 px-6 py-6 sm:px-12 sm:py-8 lg:px-16'>
                   <div className='flex flex-col gap-4 sm:flex-row sm:items-center'>

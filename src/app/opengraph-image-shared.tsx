@@ -10,9 +10,20 @@ const badge = readFile(join(process.cwd(), "src/app/icon.png")).then(
   (buffer) => `data:image/png;base64,${buffer.toString("base64")}`
 );
 
+const truculentaBold = readFile(
+  join(process.cwd(), "src/app/fonts/Truculenta-Bold.ttf")
+);
+const afacadFluxRegular = readFile(
+  join(process.cwd(), "src/app/fonts/AfacadFlux-Regular.ttf")
+);
+
 /** Shared social-preview image: the brain mark on the site's hero gradient. Used by both opengraph-image.tsx and twitter-image.tsx. */
 export async function generateSocialImage() {
-  const badgeSrc = await badge;
+  const [badgeSrc, truculentaData, afacadFluxData] = await Promise.all([
+    badge,
+    truculentaBold,
+    afacadFluxRegular,
+  ]);
 
   return new ImageResponse(
     (
@@ -35,6 +46,7 @@ export async function generateSocialImage() {
           style={{
             display: "flex",
             fontSize: 96,
+            fontFamily: "Truculenta",
             fontWeight: 700,
             color: "#ffffff",
             letterSpacing: -2,
@@ -46,6 +58,7 @@ export async function generateSocialImage() {
           style={{
             display: "flex",
             fontSize: 34,
+            fontFamily: "Afacad Flux",
             color: "#ffb854",
           }}
         >
@@ -53,6 +66,12 @@ export async function generateSocialImage() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: "Truculenta", data: truculentaData, style: "normal", weight: 700 },
+        { name: "Afacad Flux", data: afacadFluxData, style: "normal", weight: 400 },
+      ],
+    }
   );
 }

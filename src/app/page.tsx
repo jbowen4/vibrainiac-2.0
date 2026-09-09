@@ -19,11 +19,17 @@ const ABOUT_ITEMS = [
 ];
 
 const NAV_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'linkedin', href: '#' },
+  {
+    platform: 'linkedin',
+    href: 'https://www.linkedin.com/company/vibrainiac/',
+  },
 ];
 
 const FOOTER_SOCIAL_LINKS: { platform: SocialPlatform; href: string }[] = [
-  { platform: 'linkedin', href: '#' },
+  {
+    platform: 'linkedin',
+    href: 'https://www.linkedin.com/company/vibrainiac/',
+  },
 ];
 
 const FOOTER_LINKS = [
